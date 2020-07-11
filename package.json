@@ -4,6 +4,7 @@
   "description": "Typescript version of repo koa-api-template (js).",
   "main": "index.js",
   "scripts": {
+    "dev": "tsc-watch --onSuccess \"node ./dist/server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +33,13 @@
     "moment": "^2.27.0",
     "rand-token": "^1.0.1",
     "sequelize": "^6.3.3",
+    "tsc-watch": "^4.2.9",
+    "typescript": "^3.9.6",
     "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.11.3",
+    "@types/lodash": "^4.14.157",
+    "@types/sequelize": "^4.28.9"
   }
 }
