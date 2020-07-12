@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "removeComments": true,
     // Destination folder for transpiled ts files.
     "outDir": "./dist",
     // Process & infer types from .js files.
@@ -15,8 +16,8 @@
     "module": "commonjs",
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
-    // Don't emit; allow Babel to transform files.
-    "noEmit": true,
+    // Don't emit; allow Babel to transform files and create dist folder.
+    "noEmit": false,
   },
   // Files to watch
   "include": [

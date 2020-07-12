@@ -4,7 +4,10 @@
   "description": "Typescript version of repo koa-api-template (js).",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch src --exec ts-node ./src/server.ts",
+    "dev": "nodemon --exec ts-node ./src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "prod": "npm run build && node dist/server.js",
     "test": "jest --no-cache --detectOpenHandles --forceExit"
   },
   "repository": {

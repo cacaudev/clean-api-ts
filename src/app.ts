@@ -12,7 +12,7 @@ const router = new Router();
 
 router
   .get('/', async (ctx: Koa.Context, next: Koa.Next) => {
-    ctx.body = "Hello ts-node!";
+    ctx.body = "Hello ts-node from build!";
     return;
   });
 
