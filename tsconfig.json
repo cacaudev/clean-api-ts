@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "removeComments": true,
-    // Destination folder for transpiled ts files.
+    // Destination folder for compiled ts files.
     "outDir": "./dist",
+    // Folder with raw ts files to be compiled.
+    "rootDir": "./src",
     // Process & infer types from .js files.
     "allowJs": true,
-    // Target latest version of ECMAScript.
+    // Target 2019 version of ECMAScript.
     "target": "ES2019",
     // Enable strictest settings like strictNullChecks & noImplicitAny.
     "strict": true,
@@ -13,16 +15,13 @@
     "esModuleInterop": true,
     // Restrict the use of impliticy any
     "noImplicitAny": false,
+    // Specifies the module resolution strategy
     "module": "commonjs",
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
     // Don't emit; allow Babel to transform files and create dist folder.
     "noEmit": false,
   },
-  // Files to watch
-  "include": [
-    "./src/**/*"
-  ],
   // Files to exclude
   "exclude": [
     "node_modules",
