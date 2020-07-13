@@ -4,7 +4,7 @@
     // Destination folder for compiled ts files.
     "outDir": "./dist",
     // Folder with raw ts files to be compiled.
-    "rootDir": "./src",
+    //"rootDir": "./src",
     // Process & infer types from .js files.
     "allowJs": true,
     // Target 2019 version of ECMAScript.
@@ -22,6 +22,10 @@
     // Don't emit; allow Babel to transform files and create dist folder.
     "noEmit": false,
   },
+  // Files to watch
+  "include": [
+    "./src/**/*"
+  ],
   // Files to exclude
   "exclude": [
     "node_modules",
