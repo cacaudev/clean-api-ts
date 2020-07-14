@@ -4,13 +4,12 @@
  * @Last Modified by: cacaudev
  * @Last Modified time: 2020-07-14 16:49:38
  */
-import winston from 'winston';
-import stream from 'stream';
+import winston from "winston";
 
 const logger = winston.createLogger({
   transports: [
     new winston.transports.Console({
-      level: 'debug',
+      level: "debug",
       handleExceptions: true,
       format: winston.format.simple(),
     }),
@@ -18,11 +17,10 @@ const logger = winston.createLogger({
   exitOnError: false,
 });
 
-const loggerStream = (options?: any) =>
-  new stream.Duplex({
-    write(message: string) {
-      logger.info(message.substring(0, message.lastIndexOf('\n')));
-    },
-  });
+const loggerStream = {
+  write: (message: string) => {
+    logger.info(message.substring(0, message.lastIndexOf("\n")));
+  },
+};
 
 export { logger, loggerStream };
