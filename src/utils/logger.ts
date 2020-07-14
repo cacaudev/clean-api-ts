@@ -2,15 +2,15 @@
  * @Author: cacaudev
  * @Date: 2020-07-14 16:03:12
  * @Last Modified by: cacaudev
- * @Last Modified time: 2020-07-14 16:49:38
+ * @Last Modified time: 2020-07-14 19:05:55
  */
-import winston from "winston";
-import morgan from "koa-morgan";
+import winston from 'winston';
+import morgan from 'koa-morgan';
 
 const logger = winston.createLogger({
   transports: [
     new winston.transports.Console({
-      level: "debug",
+      level: 'debug',
       handleExceptions: true,
       format: winston.format.simple(),
     }),
@@ -20,10 +20,10 @@ const logger = winston.createLogger({
 
 const loggerStream = {
   write: (message: string) => {
-    logger.info(message.substring(0, message.lastIndexOf("\n")));
+    logger.info(message.substring(0, message.lastIndexOf('\n')));
   },
 };
 
-const loggerMiddleware = () => morgan("tiny", { stream: loggerStream });
+const loggerMiddleware = () => morgan('tiny', { stream: loggerStream });
 
 export { logger, loggerMiddleware };
