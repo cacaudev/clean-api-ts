@@ -20,15 +20,10 @@
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
     // Don't emit; allow Babel to transform files and create dist folder.
-    "noEmit": false,
+    "noEmit": false
   },
   // Files to watch
-  "include": [
-    "./src/**/*"
-  ],
+  "include": ["./src/**/*"],
   // Files to exclude
-  "exclude": [
-    "node_modules",
-    "**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "**/*.test.ts"]
 }

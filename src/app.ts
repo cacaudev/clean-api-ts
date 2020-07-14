@@ -5,28 +5,27 @@
  * @Last Modified time: 2020-07-12 18:05:53
  */
 
-import Koa from "koa";
-import Router from "koa-router";
+import Koa from 'koa';
+import Router from 'koa-router';
 
 const router = new Router();
 
-router
-  .get('/', async (ctx: Koa.Context, next: Koa.Next) => {
-    ctx.body = "Hello ts-node from build!";
-    return;
-  });
+router.get('/', async (ctx: Koa.Context, next: Koa.Next) => {
+  ctx.body = 'Hello ts-node from build!';
+  return;
+});
 
 class App extends Koa {
   constructor() {
     super();
     this.proxy = true;
-    this.silent = this.env !== "development";
+    this.silent = this.env !== 'development';
     this.applyMiddlewares();
   }
 
   applyMiddlewares() {
-    this.use(router.routes())
-    this.use(router.allowedMethods())
+    this.use(router.routes());
+    this.use(router.allowedMethods());
   }
 }
 

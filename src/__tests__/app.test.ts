@@ -1,6 +1,6 @@
-import supertest from "supertest";
+import supertest from 'supertest';
 import http from 'http';
-import App from "../app";
+import App from '../app';
 
 /**
  * OBS: Using http.createServer() as workaround
@@ -11,15 +11,10 @@ import App from "../app";
  */
 
 describe('Integration App Test', () => {
-  test("[GET] /", (done) => {
+  test('[GET] /', (done) => {
     const app = new App();
-    const apptest = supertest(
-      http.createServer(app.callback())
-    );
-    apptest
-      .get("/")
-      .expect(200);
+    const apptest = supertest(http.createServer(app.callback()));
+    apptest.get('/').expect(200);
     done();
   });
-})
-
+});

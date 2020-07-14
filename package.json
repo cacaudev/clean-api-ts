@@ -8,7 +8,9 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "prod": "npm run build && node dist/server.js",
-    "test": "jest --no-cache --detectOpenHandles --forceExit"
+    "test": "jest --no-cache --detectOpenHandles --forceExit",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "format": "prettier --write ./src/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -58,8 +60,10 @@
     "@types/winston": "^2.4.4",
     "babel-polyfill": "^6.26.0",
     "babel-watch": "^7.0.0",
+    "husky": "^4.2.5",
     "jest": "^26.1.0",
     "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
     "sequelize-cli": "^6.2.0",
     "supertest": "^4.0.2",
     "ts-jest": "^26.1.1",
@@ -79,5 +83,10 @@
       "json",
       "node"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick — staged && npm run lint"
+    }
   }
 }
