@@ -31,15 +31,15 @@ $ npm install
 - [x] Koa Configuration
 - [x] Typescript Configuration
 - [x] Babel Configuration
-- [ ] ESLint Configuration
+- [x] TSLint Configuration
+- [ ] Logging 'Layer' (Koa-morgan, Winston)
+- [ ] Response Formatter 'Layer'
+- [ ] Errors Emitter 'Layer'
 - [ ] Sequelize Layer (Db acess and model implementation)
 - [ ] Middleware Layer examples
 - [ ] API Validation layer (Joi)
 - [ ] Service Layer examples
-- [ ] Logging 'Layer' (Koa-morgan, Winston)
 - [ ] i18n Support (i18next) for Content Translation
-- [ ] Response Formatter 'Layer'
-- [ ] Errors Emitter 'Layer'
 - [ ] Timezone configuration
 - [ ] Pagination support
 - [ ] Email Service
