@@ -6,6 +6,9 @@
  */
 
 import Koa from 'koa';
+import cors from '@koa/cors';
+import helmet from 'koa-helmet';
+import compress from 'koa-compress';
 import { bodyParserMiddleware, loggerMiddleware } from './loaders';
 import { baseRouter } from './api/routers';
 
@@ -20,9 +23,21 @@ class App extends Koa {
 
   private applyMiddlewares() {
     /**
+     * Enable Cross Origin Resource Sharing to all origins by default
+     */
+    this.use(cors());
+    /**
+     * Basic node security
+     */
+    this.use(helmet());
+    /**
      * Main app logger
      */
     this.use(loggerMiddleware());
+    /**
+     * Compress middleware for Koa
+     */
+    this.use(compress());
     /**
      * Parse request payload
      */
