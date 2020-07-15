@@ -2,10 +2,10 @@
  * @Author: cacaudev
  * @Date: 2020-07-12 17:39:28
  * @Last Modified by: cacaudev
- * @Last Modified time: 2020-07-14 19:05:17
+ * @Last Modified time: 2020-07-15 18:12:44
  */
 import App from './app';
-import { logger } from './utils';
+import { logger } from './loaders';
 
 const app = new App();
 

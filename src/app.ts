@@ -2,21 +2,12 @@
  * @Author: cacaudev
  * @Date: 2020-07-12 17:14:02
  * @Last Modified by: cacaudev
- * @Last Modified time: 2020-07-14 19:07:13
+ * @Last Modified time: 2020-07-15 18:16:59
  */
 
 import Koa from 'koa';
-import Router from 'koa-router';
-
-import { bodyParserMiddleware } from './loaders';
-import { loggerMiddleware } from './utils';
-
-const router = new Router();
-
-router.get('/', async (ctx: Koa.Context, next: Koa.Next) => {
-  ctx.body = 'Hello ts-node from build!';
-  return;
-});
+import { bodyParserMiddleware, loggerMiddleware } from './loaders';
+import { baseRouter } from './api/routers';
 
 class App extends Koa {
   constructor() {
@@ -27,17 +18,23 @@ class App extends Koa {
     this.applyRouters();
   }
 
-  applyMiddlewares() {
+  private applyMiddlewares() {
     /**
      * Main app logger
      */
     this.use(loggerMiddleware());
+    /**
+     * Parse request payload
+     */
     this.use(bodyParserMiddleware());
   }
 
-  applyRouters() {
-    this.use(router.routes());
-    this.use(router.allowedMethods());
+  private applyRouters() {
+    /**
+     * Load API routes
+     */
+    this.use(baseRouter.routes());
+    this.use(baseRouter.allowedMethods());
   }
 }
 
