@@ -9,7 +9,7 @@
     "allowJs": true,
     // Target 2019 version of ECMAScript.
     "target": "ES2019",
-    // Enable strictest settings like strictNullChecks & noImplicitAny.
+    // Enable strictest settings like strict NullChecks & noImplicitAny.
     "strict": true,
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
@@ -20,7 +20,26 @@
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
     // Don't emit; allow Babel to transform files and create dist folder.
-    "noEmit": false
+    "noEmit": false,
+    "lib": ["es6"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
+    // Accept json imports
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@models/*": ["./src/models/*"],
+      "@config/*": ["./src/config/*"],
+      "@controllers/*": ["./src/api/controllers/*"],
+      "@routers/*": ["./src/api/routers/*"],
+      "@common/*": ["./src/common/*"],
+      "@services/*": ["./src/services/*"]
+    }
   },
   // Files to watch
   "include": ["./src/**/*"],

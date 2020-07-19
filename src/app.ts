@@ -10,7 +10,7 @@ import cors from '@koa/cors';
 import helmet from 'koa-helmet';
 import compress from 'koa-compress';
 import { bodyParserMiddleware, loggerMiddleware } from './loaders';
-import { baseRouter } from './api/routers';
+import { baseRouter } from '@routers/baseRouter';
 
 class App extends Koa {
   constructor() {
