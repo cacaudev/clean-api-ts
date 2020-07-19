@@ -1,36 +1,20 @@
 {
   "compilerOptions": {
-    "removeComments": true,
-    // Destination folder for compiled ts files.
-    "outDir": "./dist",
-    // Folder with raw ts files to be compiled.
-    //"rootDir": "./src",
-    // Process & infer types from .js files.
-    "allowJs": true,
-    // Target 2019 version of ECMAScript.
     "target": "ES2019",
-    // Enable strictest settings like strict NullChecks & noImplicitAny.
-    "strict": true,
-    // Import non-ES modules as default imports.
-    "esModuleInterop": true,
-    // Restrict the use of impliticy any
-    "noImplicitAny": false,
-    // Specifies the module resolution strategy
     "module": "commonjs",
-    // Search under node_modules for non-relative imports.
-    "moduleResolution": "node",
-    // Don't emit; allow Babel to transform files and create dist folder.
-    "noEmit": false,
     "lib": ["es6"],
+    "allowJs": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "removeComments": true,
     "typeRoots": [
       "./node_modules/@types",
       "./src/@types"
     ],
-    // Accept json imports
+    "esModuleInterop": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-
     "baseUrl": ".",
     "paths": {
       "@models/*": ["./src/models/*"],
@@ -41,8 +25,7 @@
       "@services/*": ["./src/services/*"]
     }
   },
-  // Files to watch
-  "include": ["./src/**/*"],
-  // Files to exclude
-  "exclude": ["node_modules", "**/*.test.ts"]
+  "include": [
+    "src/**/*"
+  ]
 }
