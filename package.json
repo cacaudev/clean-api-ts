@@ -4,7 +4,7 @@
   "description": "Typescript version of repo koa-api-template (js).",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
     "prod": "npm run build && node dist/server.js",

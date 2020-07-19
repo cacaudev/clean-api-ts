@@ -32,17 +32,17 @@ $ npm install
 - [x] Typescript Configuration
 - [x] Babel Configuration
 - [x] TSLint Configuration
-- [ ] Logging 'Layer' (Koa-morgan, Winston)
+- [x] Logging 'Layer' (Koa-morgan, Winston)
 - [ ] Response Formatter 'Layer'
 - [ ] Errors Emitter 'Layer'
 - [ ] Sequelize Layer (Db acess and model implementation)
 - [ ] Middleware Layer examples
 - [ ] API Validation layer (Joi)
 - [ ] Service Layer examples
-- [ ] i18n Support (i18next) for Content Translation
+- [ ] i18n Service (i18next) for Content Translation
 - [ ] Timezone configuration
 - [ ] Pagination support
-- [ ] Email Service
+- [ ] Email Service with NodeMailer
 - [ ] Bcrypt Authorization and Protection
 - [ ] JWT Authentication Layer
 - [ ] JSDoc/Swagger/ESDoc Documentation
