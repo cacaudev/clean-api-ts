@@ -1,29 +1,39 @@
-/*
- * @Author: cacaudev
- * @Date: 2020-07-14 16:03:12
- * @Last Modified by: cacaudev
- * @Last Modified time: 2020-07-14 19:05:55
- */
 import winston from 'winston';
-import morgan from 'koa-morgan';
 
-const logger = winston.createLogger({
-  transports: [
-    new winston.transports.Console({
-      level: 'debug',
-      handleExceptions: true,
-      format: winston.format.simple(),
-    }),
-  ],
-  exitOnError: false,
-});
+class Logger {
+  private static instance: Logger;
+  private loggerSubject: winston.Logger;
 
-const loggerStream = {
-  write: (message: string) => {
-    logger.info(message.substring(0, message.lastIndexOf('\n')));
-  },
-};
+  private constructor() {}
 
-const loggerMiddleware = () => morgan('tiny', { stream: loggerStream });
+  public static getInstance(): Logger {
+    if (!Logger.instance) {
+      Logger.instance = new Logger();
+      Logger.instance.loggerSubject = winston.createLogger({
+        transports: [
+          new winston.transports.Console({
+            level: 'debug',
+            handleExceptions: true,
+            format: winston.format.simple(),
+          }),
+        ],
+        exitOnError: false,
+      });
+    }
+    return Logger.instance;
+  }
 
-export { logger, loggerMiddleware };
+  public get stream() {
+    return {
+      write: (message: string) => {
+        this.subject.info(message.substring(0, message.lastIndexOf('\n')));
+      },
+    };
+  }
+
+  public get subject() {
+    return this.loggerSubject;
+  }
+}
+
+export { Logger };
