@@ -5,7 +5,7 @@ import morgan from 'koa-morgan';
 import compress from 'koa-compress';
 import { bodyParserMiddleware } from '@providers/loaders/requestParser';
 import { Logger } from '@providers/common/logger';
-import { baseRouter } from './routes';
+import { baseRouter } from './routes/baseRouter';
 
 class App extends Koa {
   constructor() {
@@ -44,7 +44,7 @@ class App extends Koa {
      * Load API routes
      */
     this.use(baseRouter.routes());
-    this.use(baseRouter.allowedMethods());
+    //this.use(baseRouter.allowedMethods());
   }
 }
 

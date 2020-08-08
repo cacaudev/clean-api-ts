@@ -4,7 +4,7 @@ export class User {
 
   public readonly id: string;
 
-  public email: number;
+  public email: string;
   public name: string;
   public surname: string;
   public password: string;
