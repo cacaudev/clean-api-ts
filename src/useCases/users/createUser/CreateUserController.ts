@@ -6,7 +6,7 @@ export class CreateUserController {
     private createUserUseCase: CreateUserUseCase,
   ) {}
 
-  async handle(ctx: Context) {
+  handle = async (ctx: Context) => {
     const { name, surname, email, password } = ctx.request.body;
 
     try {
@@ -17,7 +17,7 @@ export class CreateUserController {
         password
       });
 
-      ctx.status = 200;
+      ctx.status = 201;
       ctx.type = 'application/json';
       ctx.body = newUser;
       return;

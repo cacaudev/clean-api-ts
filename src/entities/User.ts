@@ -1,4 +1,4 @@
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 export class User {
 
@@ -13,7 +13,7 @@ export class User {
     Object.assign(this, attributes);
 
     if (!id) {
-      this.id = uuid();
+      this.id = uuidv4();
     }
   }
 }
