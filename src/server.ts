@@ -1,5 +1,5 @@
 import { App } from './app';
-import { Logger } from '@common/logger';
+import { Logger } from '@providers/common/logger';
 
 const PORT = process.env.port || 3000;
 const app = new App();
@@ -12,12 +12,10 @@ const onAppError = (error: NodeJS.ErrnoException): void => {
       console.log('Error on AppError: EACCES ', error);
       log.error(`Port ${PORT} requires elevated privileges.`);
       process.exit(1);
-      break;
     case 'EADDRINUSE':
       console.log('Error on AppError: EADDRINUSE', error);
       log.error(`Port ${PORT} is already in use.`);
       process.exit(1);
-      break;
     default:
       console.log('Error on AppError: EADDRINUSE', error);
       throw error;

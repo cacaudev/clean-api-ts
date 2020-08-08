@@ -35,3 +35,8 @@ $ npm install
 - [x] Typescript Configuration
 - [x] Babel Configuration
 - [x] TSLint Configuration
+- [x] Logging 'Layer'
+- [x] Use Case Layer
+- [x] Entities Layer
+- [x] Repositories Layer
+- [x] Providers Layer

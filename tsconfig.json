@@ -18,9 +18,9 @@
       "@config/*": ["./src/config/*"],
       "@useCases/*": ["./src/useCases/*"],
       "@repositories/*": ["./src/repositories/*"],
-      "@common/*": ["./src/common/*"],
+      "@common/*": ["src/providers/common/*"],
       "@providers/*": ["./src/providers/*"],
-      "@loaders/*": ["./src/loaders/*"]
+      "@loaders/*": ["src/providers/loaders/*"]
     }
   },
   "include": ["src/**/*"]

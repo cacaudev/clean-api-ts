@@ -3,8 +3,8 @@ import cors from '@koa/cors';
 import helmet from 'koa-helmet';
 import morgan from 'koa-morgan';
 import compress from 'koa-compress';
-import { bodyParserMiddleware } from '@loaders/requestParser';
-import { Logger } from '@common/logger';
+import { bodyParserMiddleware } from '@providers/loaders/requestParser';
+import { Logger } from '@providers/common/logger';
 import { baseRouter } from './routes';
 
 class App extends Koa {

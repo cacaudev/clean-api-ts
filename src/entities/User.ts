@@ -1,16 +1,19 @@
-interface UserInterface {
-  email: number;
-  name?: string;
-  surname?: string;
-}
+import { uuid } from 'uuidv4';
 
-class User extends Model {
-  public readonly id!: number;
-  public email!: number;
+export class User {
+
+  public readonly id: string;
+
+  public email: number;
   public name: string;
   public surname: string;
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
-}
+  public password: string;
 
-export { User, UserInterface };
+  constructor(attributes: Omit<User, 'id'>, id?: string) {
+    Object.assign(this, attributes);
+
+    if (!id) {
+      this.id = uuid();
+    }
+  }
+}
