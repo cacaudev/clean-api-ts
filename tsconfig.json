@@ -14,12 +14,13 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@models/*": ["./src/models/*"],
+      "@entities/*": ["src/entities/*"],
       "@config/*": ["./src/config/*"],
-      "@controllers/*": ["./src/api/controllers/*"],
-      "@routers/*": ["./src/api/routers/*"],
+      "@useCases/*": ["./src/useCases/*"],
+      "@repositories/*": ["./src/repositories/*"],
       "@common/*": ["./src/common/*"],
-      "@services/*": ["./src/services/*"]
+      "@providers/*": ["./src/providers/*"],
+      "@loaders/*": ["./src/loaders/*"]
     }
   },
   "include": ["src/**/*"]

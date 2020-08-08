@@ -1,11 +1,14 @@
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/cacaudev/koa-api-template-ts)
 
-# Koa API Template in Typescript
+# Koa API BoilerPlate
 
 Typescript version of repo koa-api-template (REST API template
 to be used on personal projects and for learning purposes)
 
 🚀 UNDER CONSTRUCTION 🚀
+
+- SOLID
+- CLEAN ARCHITECTURE
 
 ## Guide
 
@@ -32,19 +35,3 @@ $ npm install
 - [x] Typescript Configuration
 - [x] Babel Configuration
 - [x] TSLint Configuration
-- [x] Logging 'Layer' (Koa-morgan, Winston)
-- [ ] Response Formatter 'Layer'
-- [ ] Errors Emitter 'Layer'
-- [ ] Sequelize Layer (Db acess and model implementation)
-- [ ] Middleware Layer examples
-- [ ] API Validation layer (Joi)
-- [ ] Service Layer examples
-- [ ] i18n Service (i18next) for Content Translation
-- [ ] Timezone configuration
-- [ ] Pagination support
-- [ ] Email Service with NodeMailer
-- [ ] Bcrypt Authorization and Protection
-- [ ] JWT Authentication Layer
-- [ ] JSDoc/Swagger/ESDoc Documentation
-- [ ] Unit tests (Jest and SuperTest)
-- [ ] Add features with socket.io

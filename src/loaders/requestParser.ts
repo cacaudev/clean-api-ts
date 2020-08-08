@@ -1,10 +1,3 @@
-/*
- * @Author: cacaudev
- * @Date: 2020-07-14 18:21:45
- * @Last Modified by: cacaudev
- * @Last Modified time: 2020-07-14 19:05:49
- */
-
 import bodyParser from 'koa-bodyparser';
 
 type bodyParserDTO = {

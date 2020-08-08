@@ -16,11 +16,12 @@ module.exports = {
       {
         alias: {
           '@config': './src/config',
-          '@models': './src/models',
-          '@controllers': './src/controllers',
-          '@routers': './src/api/routers',
+          '@entities': './src/entities',
+          '@useCases': './src/useCases',
+          '@repositories': './src/repositories',
           '@common': './src/common',
-          '@services': './src/services',
+          '@providers': './src/providers',
+          '@loaders': './src/loaders',
         },
       },
     ],

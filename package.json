@@ -58,8 +58,10 @@
     "@types/koa-router": "^7.4.1",
     "@types/koa__cors": "^3.0.1",
     "@types/lodash": "^4.14.157",
+    "@types/node": "^14.0.26",
     "@types/sequelize": "^4.28.9",
     "@types/supertest": "^2.0.10",
+    "@types/validator": "^13.1.0",
     "@types/winston": "^2.4.4",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-polyfill": "^6.26.0",
@@ -76,10 +78,5 @@
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.9.6"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick — staged && npm run lint"
-    }
   }
 }

@@ -1,4 +1,11 @@
-import winston from 'winston';
+import winston, { createLogger, format, transports } from 'winston';
+
+const errorStackTracerFormat = format((info) => {
+  if (info.meta && info.meta instanceof Error) {
+    info.message = `${info.message} ${info.meta.stack}`;
+  }
+  return info;
+});
 
 class Logger {
   private static instance: Logger;
@@ -9,12 +16,16 @@ class Logger {
   public static getInstance(): Logger {
     if (!Logger.instance) {
       Logger.instance = new Logger();
-      Logger.instance.loggerSubject = winston.createLogger({
+      Logger.instance.loggerSubject = createLogger({
         transports: [
-          new winston.transports.Console({
+          new transports.Console({
             level: 'debug',
             handleExceptions: true,
-            format: winston.format.simple(),
+            format: format.combine(
+              format.splat(), // Necessary to produce the 'meta' property
+              errorStackTracerFormat(),
+              format.simple()
+            ),
           }),
         ],
         exitOnError: false,

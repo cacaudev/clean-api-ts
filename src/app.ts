@@ -1,17 +1,11 @@
-/*
- * @Author: cacaudev
- * @Date: 2020-07-12 17:14:02
- * @Last Modified by: cacaudev
- * @Last Modified time: 2020-07-23 11:23:18
- */
-
 import Koa from 'koa';
 import cors from '@koa/cors';
 import helmet from 'koa-helmet';
 import morgan from 'koa-morgan';
 import compress from 'koa-compress';
-import { bodyParserMiddleware, Logger } from './loaders';
-import { baseRouter } from '@routers/baseRouter';
+import { bodyParserMiddleware } from '@loaders/requestParser';
+import { Logger } from '@common/logger';
+import { baseRouter } from './routes';
 
 class App extends Koa {
   constructor() {
@@ -34,7 +28,7 @@ class App extends Koa {
     /**
      * Main app logger
      */
-    this.use(morgan('tiny', { stream: Logger.getInstance().stream }));
+    this.use(morgan('dev', { stream: Logger.getInstance().stream }));
     /**
      * Compress middleware for Koa
      */
@@ -54,4 +48,4 @@ class App extends Koa {
   }
 }
 
-export default App;
+export { App };
