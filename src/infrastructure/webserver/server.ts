@@ -1,5 +1,5 @@
 import { App } from './app';
-import { Logger } from '@providers/common/logger';
+import { Logger } from '../providers/common/logger';
 
 const PORT = process.env.port || 3000;
 const app = new App();

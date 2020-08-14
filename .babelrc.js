@@ -18,7 +18,7 @@ module.exports = {
           '@config': './src/config',
           '@entities': './src/domain/entities',
           '@interfaces': './src/interfaces',
-          '@providers': './src/infrastructure/providers',
+          '@infrastructure': './src/infrastructure',
           '@repositories': './src/domain/repositories',
           '@useCases': './src/application/useCases',
         },

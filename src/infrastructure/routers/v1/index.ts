@@ -1,4 +1,4 @@
-/*import Router from 'koa-router';
+import Router from 'koa-router';
 
 import { usersRouter } from './usersRouter';
 
@@ -8,4 +8,4 @@ v1Router
   .use(usersRouter.routes());
 
 export { v1Router };
-*/
+
