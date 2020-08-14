@@ -1,0 +1,51 @@
+
+import path from 'path';
+import dotenv from 'dotenv';
+
+dotenv.config({
+  path: path.resolve(__dirname + '/.env'),
+});
+
+const {
+  DEVELOPMENT_DATABASE_URL,
+  TEST_DATABASE_URL,
+  STAGE_DATABASE_URL,
+  PRODUCTION_DATABASE_URL,
+} = process.env;
+
+module.exports = {
+  development: {
+    url: DEVELOPMENT_DATABASE_URL,
+    logging: function (e) {
+      console.log(e);
+    },
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: false,
+    },
+  },
+  test: {
+    url: TEST_DATABASE_URL,
+    logging: false,
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: true,
+    },
+  },
+  stage: {
+    url: STAGE_DATABASE_URL,
+    logging: false,
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: true,
+    },
+  },
+  production: {
+    url: PRODUCTION_DATABASE_URL,
+    logging: false,
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: true,
+    },
+  },
+};
