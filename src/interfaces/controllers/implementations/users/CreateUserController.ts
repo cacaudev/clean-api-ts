@@ -1,5 +1,5 @@
 import { CreateUserUseCase } from '@useCases/users/createUser/CreateUserUseCase';
-import { HttpRequest, IHttpClientController } from '../../IHttpClientController';
+import { HttpRequest, IHttpClientController } from '../../definitions/IHttpClientController';
 
 export class CreateUserController implements IHttpClientController {
   constructor(

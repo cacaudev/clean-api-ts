@@ -1,4 +1,4 @@
-import { HttpRequest, IHttpClientController } from '../../IHttpClientController';
+import { HttpRequest, IHttpClientController } from '../../definitions/IHttpClientController';
 
 export class MainController implements IHttpClientController {
 

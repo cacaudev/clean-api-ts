@@ -1,5 +1,5 @@
 import { Context, Next } from 'koa';
-import { IHttpClientController, HttpRequest } from '../../interfaces/controllers/IHttpClientController';
+import { IHttpClientController, HttpRequest } from '@interfaces/controllers/definitions/IHttpClientController';
 
 class KoaControllerAdapter {
   static adapt (controller: IHttpClientController ) {

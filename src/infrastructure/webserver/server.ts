@@ -35,8 +35,4 @@ class WebServer {
   }
 }
 
-
-//const server = app.listen(PORT, onAppListening);
-//app.on('error', onAppError);
-
 export { WebServer };

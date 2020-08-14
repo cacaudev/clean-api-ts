@@ -1,5 +1,5 @@
-import { IUsersRepository } from './implementations/IUsersRepository';
-import { User } from '../entities/User';
+import { IUsersRepository } from '../definitions/IUsersRepository';
+import { User } from '../../entities/User';
 
 export class UsersRepository implements IUsersRepository {
   private users: User[] = []; // Only mimic users table

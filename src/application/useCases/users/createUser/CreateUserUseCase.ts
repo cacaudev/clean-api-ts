@@ -1,4 +1,4 @@
-import { IUsersRepository } from "src/domain/repositories/implementations/IUsersRepository";
+import { IUsersRepository } from "@repositories/definitions/IUsersRepository";
 import { ICreateUserRequest } from './ICreateUser';
 import { User } from '@entities/User';
 import { IUseCase } from "@useCases/IUseCase";

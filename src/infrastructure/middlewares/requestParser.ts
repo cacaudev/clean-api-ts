@@ -23,7 +23,7 @@ const defaultParserOptions = {
 };
 
 /**
- * HTTP request body will be stored in ctx.request.body from Koa
+ * HTTP request body will be stored in httpRequest
  */
 const bodyParserMiddleware = () => bodyParser(defaultParserOptions);
 
