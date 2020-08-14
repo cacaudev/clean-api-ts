@@ -1,13 +1,4 @@
-/*
- * @Author: cacaudev
- * @Date: 2020-07-17 11:27:28
- * @Last Modified by:   cacaudev
- * @Last Modified time: 2020-07-17 11:27:28
- */
 
-/**
- * HTTP Status codes
- */
 export default {
   CONTINUE: 100,
   OK: 200,
@@ -30,5 +21,5 @@ export default {
   NOT_IMPLEMENTED: 501,
   BAD_GATEWAY: 502,
   SERVICE_UNAVAILABLE: 503,
-  GATEWAY_TIMEOUT: 504,
+  GATEWAY_TIMEOUT: 504
 };

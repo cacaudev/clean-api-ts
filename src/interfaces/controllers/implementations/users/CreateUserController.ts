@@ -1,5 +1,7 @@
 import { CreateUserUseCase } from '@useCases/users/createUser/CreateUserUseCase';
-import { HttpRequest, IHttpClientController } from '../../definitions/IHttpClientController';
+import { IHttpClientController } from '../../definitions/IHttpClientController';
+import { HttpRequest } from '../../../helpers/types';
+import { ClientResponse } from '../../../helpers/ClientResponse';
 
 export class CreateUserController implements IHttpClientController {
   constructor(
@@ -17,17 +19,12 @@ export class CreateUserController implements IHttpClientController {
         password
       });
 
-      return {
-        status: 201,
-        type: 'application/json',
-        body: newUser
-      };
+      return ClientResponse.created(newUser);
+
     } catch (error) {
-      return {
-        status: 400,
-        type: 'application/json',
-        body: { message: error.message || 'Unexpected error' }
-      };
+      return ClientResponse.badRequest({
+        message: error.message || 'Unexpected error'
+      });
     }
   }
 };

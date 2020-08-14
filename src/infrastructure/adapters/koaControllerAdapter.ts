@@ -1,5 +1,6 @@
 import { Context, Next } from 'koa';
-import { IHttpClientController, HttpRequest } from '@interfaces/controllers/definitions/IHttpClientController';
+import { IHttpClientController } from '@interfaces/controllers/definitions/IHttpClientController';
+import { HttpRequest } from '@interfaces/helpers/types';
 
 class KoaControllerAdapter {
   static adapt (controller: IHttpClientController ) {
@@ -12,9 +13,9 @@ class KoaControllerAdapter {
 
       const httpResponse = await controller.handle(httpRequest);
 
-      ctx.status = httpResponse.status;
+      ctx.status = httpResponse.statusCode;
       ctx.type = httpResponse.type || 'application/json';
-      ctx.body = httpResponse.body || { message: 'Hello from ts-node-api!' };
+      ctx.body = httpResponse.body;
     }
   }
 }

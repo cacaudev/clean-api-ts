@@ -1,7 +1,7 @@
 import Router from 'koa-router';
 
 import { mainController } from '@interfaces/composers/MainComposer';
-import { KoaControllerAdapter } from '../adapters/koaControllerAdapter';
+import { KoaControllerAdapter } from '../adapters/KoaControllerAdapter';
 import { v1Router } from './v1';
 
 const mainRouter = new Router();

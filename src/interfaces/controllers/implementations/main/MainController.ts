@@ -1,12 +1,12 @@
-import { HttpRequest, IHttpClientController } from '../../definitions/IHttpClientController';
+import { IHttpClientController } from '../../definitions';
+import { HttpRequest } from '../../../helpers/types';
+import { ClientResponse } from '../../../helpers/ClientResponse';
 
 export class MainController implements IHttpClientController {
 
   handle = async (httpRequest: HttpRequest) => {
-    return {
-      status: 200,
-      type: 'application/json',
-      body: { message: 'Hello from main route!' }
-    };
+    return ClientResponse.ok({
+      message: 'Hello from Node Rest API!'
+    });
   }
 };

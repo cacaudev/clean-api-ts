@@ -1,21 +1,7 @@
-type HttpRequest = {
-  body: any,
-  query: any,
-  params: any
-};
-
-type HttpResponse = {
-  status: number,
-  type: string,
-  body: any
-};
+import { HttpRequest, HttpResponse } from '../../helpers/types';
 
 interface IHttpClientController {
   handle(httpRequest: HttpRequest): Promise<HttpResponse>;
 };
 
-export {
-  HttpRequest,
-  HttpResponse,
-  IHttpClientController
-};
+export { IHttpClientController };
