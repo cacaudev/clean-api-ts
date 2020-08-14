@@ -1,7 +1,7 @@
 import { Context, Next } from 'koa';
-import { IHttpClientController, HttpRequest } from '../../controllers/IHttpClientController';
+import { IHttpClientController, HttpRequest } from '../../interfaces/controllers/IHttpClientController';
 
-class KoaRouterAdapter {
+class KoaControllerAdapter {
   static adapt (controller: IHttpClientController ) {
     return async (ctx: Context, next: Next) => {
       const httpRequest: HttpRequest = {
@@ -19,4 +19,4 @@ class KoaRouterAdapter {
   }
 }
 
-export { KoaRouterAdapter };
+export { KoaControllerAdapter };

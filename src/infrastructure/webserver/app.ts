@@ -3,9 +3,10 @@ import cors from '@koa/cors';
 import helmet from 'koa-helmet';
 import morgan from 'koa-morgan';
 import compress from 'koa-compress';
-import { bodyParserMiddleware } from '@providers/loaders/requestParser';
+import { bodyParserMiddleware } from 'src/infrastructure/middlewares/requestParser';
 import { Logger } from '@providers/common/logger';
-import { baseRouter } from '../routers/implementations/baseRouter';
+import { mainRouter } from '../routers/implementations/mainRouter';
+
 
 class App extends Koa {
   constructor() {
@@ -28,7 +29,7 @@ class App extends Koa {
     /**
      * Main app logger
      */
-    //this.use(morgan('dev', { stream: Logger.getInstance().stream }));
+    this.use(morgan('dev', { stream: Logger.getInstance().stream }));
     /**
      * Compress middleware for Koa
      */
@@ -36,15 +37,15 @@ class App extends Koa {
     /**
      * Parse request payload
      */
-    //this.use(bodyParserMiddleware());
+    this.use(bodyParserMiddleware());
   }
 
   private applyRouters() {
     /**
      * Load API routes
      */
-    //this.use(baseRouter.routes());
-    //this.use(baseRouter.allowedMethods());
+    this.use(mainRouter.routes());
+    this.use(mainRouter.allowedMethods());
   }
 }
 

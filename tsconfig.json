@@ -14,13 +14,12 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@entities/*": ["src/entities/*"],
-      "@config/*": ["./src/config/*"],
-      "@useCases/*": ["./src/useCases/*"],
-      "@repositories/*": ["./src/repositories/*"],
-      "@common/*": ["src/providers/common/*"],
-      "@providers/*": ["./src/providers/*"],
-      "@loaders/*": ["src/providers/loaders/*"]
+      "@config/*": ["src/infrastructure/config/*"],
+      "@entities/*": ["src/domain/entities/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@providers/*": ["src/infrastructure/providers/*"],
+      "@repositories/*": ["src/domain/repositories/*"],
+      "@useCases/*": ["src/application/useCases/*"]
     }
   },
   "include": ["src/**/*.ts"]

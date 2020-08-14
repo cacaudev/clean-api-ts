@@ -16,12 +16,11 @@ module.exports = {
       {
         alias: {
           '@config': './src/config',
-          '@entities': './src/entities',
-          '@useCases': './src/useCases',
-          '@repositories': './src/repositories',
-          '@common': './src/common',
-          '@providers': './src/providers',
-          '@loaders': './src/loaders',
+          '@entities': './src/domain/entities',
+          '@interfaces': './src/interfaces',
+          '@providers': './src/infrastructure/providers',
+          '@repositories': './src/domain/repositories',
+          '@useCases': './src/application/useCases',
         },
       },
     ],

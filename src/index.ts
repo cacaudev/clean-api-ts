@@ -1,3 +1,3 @@
-import { WebServer } from './web/server';
+import { WebServer } from './infrastructure/webserver/server';
 
 WebServer.startApp();
