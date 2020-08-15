@@ -1,8 +1,8 @@
 
-type HttpRequest = {
+type HttpRequestType = {
   body?: any,
-  query: any,
-  params: any
+  query?: any,
+  params?: any
 };
 
-export { HttpRequest };
+export { HttpRequestType };

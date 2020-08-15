@@ -1,14 +1,14 @@
 import { CreateUserUseCase } from '@useCases/users/createUser/CreateUserUseCase';
 import { IHttpClientController } from '../../definitions/IHttpClientController';
-import { HttpRequest } from '../../../helpers/types';
-import { ClientResponse } from '../../../helpers/ClientResponse';
+import { HttpRequestType } from '../../../helpers/types';
+import { HttpClientResponse } from '../../../helpers/HttpClientResponse';
 
 export class CreateUserController implements IHttpClientController {
   constructor(
     private createUserUseCase: CreateUserUseCase,
   ) {}
 
-  handle = async (httpRequest: HttpRequest) => {
+  handle = async (httpRequest: HttpRequestType) => {
     const { name, surname, email, password } = httpRequest.body;
 
     try {
@@ -19,10 +19,10 @@ export class CreateUserController implements IHttpClientController {
         password
       });
 
-      return ClientResponse.created(newUser);
+      return HttpClientResponse.created(newUser);
 
     } catch (error) {
-      return ClientResponse.badRequest({
+      return HttpClientResponse.badRequest({
         message: error.message || 'Unexpected error'
       });
     }

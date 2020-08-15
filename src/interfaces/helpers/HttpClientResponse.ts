@@ -1,9 +1,9 @@
 import StatusCodes from './types/statusCodes';
-import { HttpResponse } from './types/HttpResponse';
+import { HttpResponseType } from './types/HttpResponse';
+import { UnauthorizedError, InternalServerError } from './errors';
 
-class ClientResponse {
-
-  static ok (body?: any): HttpResponse {
+class HttpClientResponse {
+  static ok (body?: any): HttpResponseType {
     return {
       statusCode: StatusCodes.OK,
       type: 'application/json',
@@ -11,7 +11,7 @@ class ClientResponse {
     };
   }
 
-  static created (body: any): HttpResponse {
+  static created (body: any): HttpResponseType {
     return {
       statusCode: StatusCodes.CREATED,
       type: 'application/json',
@@ -19,35 +19,33 @@ class ClientResponse {
     };
   }
 
-  static badRequest (error: object): HttpResponse {
+  static badRequest (error: any): HttpResponseType {
     return {
       statusCode: StatusCodes.BAD_REQUEST,
       type: 'application/json',
-      body: { error }
+      body: { error: error.message }
     }
   }
 
-  static unauthorizedError (): HttpResponse {
+  static unauthorizedError (): HttpResponseType {
     return {
       statusCode: StatusCodes.UNAUTHORIZED,
       type: 'application/json',
       body: {
-         //error: new ServerError().message
-         error: 'Unauthorized action'
+         error: new UnauthorizedError().message
       }
     }
   }
 
-  static serverError (): HttpResponse {
+  static serverError (): HttpResponseType {
     return {
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
       type: 'application/json',
       body: {
-        //error: new ServerError().message
-        error: 'Server error'
+        error: new InternalServerError().message
       }
     }
   }
 }
 
-export { ClientResponse };
+export { HttpClientResponse };

@@ -22,9 +22,6 @@ const defaultParserOptions = {
   parsedMethods: ['POST', 'PUT', 'PATCH', 'DELETE'],
 };
 
-/**
- * HTTP request body will be stored in httpRequest
- */
 const bodyParserMiddleware = () => bodyParser(defaultParserOptions);
 
 export { bodyParserMiddleware };

@@ -1,11 +1,11 @@
 import { Context, Next } from 'koa';
 import { IHttpClientController } from '@interfaces/controllers/definitions/IHttpClientController';
-import { HttpRequest } from '@interfaces/helpers/types';
+import { HttpRequestType } from '@interfaces/helpers/types';
 
 class KoaControllerAdapter {
   static adapt (controller: IHttpClientController ) {
     return async (ctx: Context, next: Next) => {
-      const httpRequest: HttpRequest = {
+      const httpRequest: HttpRequestType = {
         body: ctx.request.body,
         query: ctx.query,
         params: ctx.params
