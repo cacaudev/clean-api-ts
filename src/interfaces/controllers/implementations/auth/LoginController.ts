@@ -19,13 +19,15 @@ export class LoginController implements IHttpClientController {
       if (!email) {
         return HttpClientResponse.badRequest(new MissingParamError('email'));
       }
-
       if (!password) {
         return HttpClientResponse.badRequest(new MissingParamError('password'));
       }
 
+      // Todo: Remove this, substitute for token generator
+      const accessToken = { accessToken: 'sfdsgd4f53d4s5f6ds74f564'};
+
       if (email == correctCredentials.email && password == correctCredentials.password) {
-        return HttpClientResponse.ok();
+        return HttpClientResponse.ok(accessToken);
       } else {
         return HttpClientResponse.unauthorizedError();
       }

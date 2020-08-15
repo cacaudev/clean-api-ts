@@ -1,5 +1,9 @@
 import { LoginController } from './LoginController';
-import { MissingParamError } from '@interfaces/helpers/errors';
+import {
+  MissingParamError,
+  InternalServerError,
+  UnauthorizedError
+} from '@interfaces/helpers/errors';
 
 const loginController = new LoginController();
 
@@ -28,9 +32,10 @@ describe('Login Controller', () => {
     const httpRequest = {};
     const httpResponse = await loginController.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(500);
+    expect(httpResponse.body.error).toBe(new InternalServerError().message);
   });
 
-  test('Should return 500 if no httpRequest body is provided', async () => {
+  test('Should return 400 if no httpRequest body is provided', async () => {
     const httpRequest = {
       body: {}
     };
@@ -47,6 +52,7 @@ describe('Login Controller', () => {
     };
     const httpResponse = await loginController.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(401);
+    expect(httpResponse.body.error).toBe(new UnauthorizedError().message);
   });
 
   test('Should return 200 all parameters are present', async () => {

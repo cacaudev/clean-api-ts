@@ -1,6 +1,6 @@
 import { UsersRepository } from '@repositories/implementations/UsersRepository';
 import { CreateUserUseCase } from '@useCases/users/createUser/CreateUserUseCase';
-import { CreateUserController } from '../controllers/implementations/users/CreateUserController';
+import { CreateUserController } from '../../controllers/implementations/users/CreateUserController';
 
 const usersRepository = new UsersRepository();
 
