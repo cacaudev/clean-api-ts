@@ -8,9 +8,9 @@ const createUserUseCase = new CreateUserUseCase(
   usersRepository
 );
 
-const createUserController = new CreateUserController(
+const createUserComposer = new CreateUserController(
   createUserUseCase
 );
 
-export { createUserController };
+export { createUserComposer };
 

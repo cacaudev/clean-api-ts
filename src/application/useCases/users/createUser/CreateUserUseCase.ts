@@ -3,10 +3,10 @@ import { ICreateUserRequest } from './ICreateUser';
 import { User } from '@entities/User';
 import { IUseCase } from "@useCases/IUseCase";
 
-export class CreateUserUseCase implements IUseCase {
+class CreateUserUseCase implements IUseCase {
   constructor(
     private usersRepository: IUsersRepository
-  ) {}
+  ) {};
 
   async execute(data: ICreateUserRequest) {
     console.log('Executing create user use case');
@@ -22,5 +22,7 @@ export class CreateUserUseCase implements IUseCase {
 
     //const newUser = await this.usersRepository.add(user);
     //return newUser;
-  }
+  };
 };
+
+export { CreateUserUseCase };

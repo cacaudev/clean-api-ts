@@ -1,9 +1,14 @@
 import { IHttpClientController } from '../../definitions';
-import { HttpRequestType } from '../../../helpers/types';
-import { HttpClientResponse } from '../../../helpers/HttpClientResponse';
+import { HttpRequestType } from '@interfaces/helpers/types';
+import { HttpClientResponse } from '@interfaces/helpers/HttpClientResponse';
 import { MissingParamError } from '@interfaces/helpers/errors';
+import { LoginUseCase } from '@useCases/auth/LoginUseCase';
 
 export class LoginController implements IHttpClientController {
+
+  constructor(
+    private loginUseCase: LoginUseCase
+  ) {}
 
   handle = async (httpRequest: HttpRequestType) => {
 
@@ -25,6 +30,8 @@ export class LoginController implements IHttpClientController {
 
       // Todo: Remove this, substitute for token generator
       const accessToken = { accessToken: 'sfdsgd4f53d4s5f6ds74f564'};
+
+      await this.loginUseCase.execute({ email, password });
 
       if (email == correctCredentials.email && password == correctCredentials.password) {
         return HttpClientResponse.ok(accessToken);

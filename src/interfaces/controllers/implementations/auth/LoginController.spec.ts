@@ -1,11 +1,9 @@
-import { LoginController } from './LoginController';
+import { loginComposer } from '../../../composers/auth/LoginComposer';
 import {
   MissingParamError,
   InternalServerError,
   UnauthorizedError
 } from '@interfaces/helpers/errors';
-
-const loginController = new LoginController();
 
 describe('Login Controller', () => {
 
@@ -13,7 +11,7 @@ describe('Login Controller', () => {
     const httpRequest = {
       body: { password: 'anyPassword'}
     };
-    const httpResponse = await loginController.handle(httpRequest);
+    const httpResponse = await loginComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body.error).toBe(new MissingParamError('email').message);
   });
@@ -23,14 +21,14 @@ describe('Login Controller', () => {
     const httpRequest = {
       body: { email: 'anyEmail@email.com' }
     };
-    const httpResponse = await loginController.handle(httpRequest);
+    const httpResponse = await loginComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body.error).toBe(new MissingParamError('password').message);
   });
 
   test('Should return 500 if no httpRequest is provided', async () => {
     const httpRequest = {};
-    const httpResponse = await loginController.handle(httpRequest);
+    const httpResponse = await loginComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(500);
     expect(httpResponse.body.error).toBe(new InternalServerError().message);
   });
@@ -39,7 +37,7 @@ describe('Login Controller', () => {
     const httpRequest = {
       body: {}
     };
-    const httpResponse = await loginController.handle(httpRequest);
+    const httpResponse = await loginComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
   });
 
@@ -50,7 +48,7 @@ describe('Login Controller', () => {
         password: 'anyPassword'
       }
     };
-    const httpResponse = await loginController.handle(httpRequest);
+    const httpResponse = await loginComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(401);
     expect(httpResponse.body.error).toBe(new UnauthorizedError().message);
   });
@@ -62,7 +60,7 @@ describe('Login Controller', () => {
         password: 'correctEmail'
       }
     };
-    const httpResponse = await loginController.handle(httpRequest);
+    const httpResponse = await loginComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(200);
   });
 });

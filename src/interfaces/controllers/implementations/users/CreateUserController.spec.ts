@@ -1,4 +1,4 @@
-import { createUserController } from '@interfaces/composers/users/CreateUserComposer';
+import { createUserComposer } from '@interfaces/composers/users/CreateUserComposer';
 import { MissingParamError, InternalServerError } from '@interfaces/helpers/errors';
 
 describe('Create User Controller', () => {
@@ -11,7 +11,7 @@ describe('Create User Controller', () => {
         password: 'anyPassword'
       }
     };
-    const httpResponse = await createUserController.handle(httpRequest);
+    const httpResponse = await createUserComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body.error).toBe(new MissingParamError('name').message)
   });
@@ -24,7 +24,7 @@ describe('Create User Controller', () => {
         password: 'anyPassword'
       }
     };
-    const httpResponse = await createUserController.handle(httpRequest);
+    const httpResponse = await createUserComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body.error).toBe(new MissingParamError('surname').message)
   });
@@ -37,7 +37,7 @@ describe('Create User Controller', () => {
         password: 'anyPassword'
       }
     };
-    const httpResponse = await createUserController.handle(httpRequest);
+    const httpResponse = await createUserComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body.error).toBe(new MissingParamError('email').message)
   });
@@ -50,7 +50,7 @@ describe('Create User Controller', () => {
         email: 'anyMail',
       }
     };
-    const httpResponse = await createUserController.handle(httpRequest);
+    const httpResponse = await createUserComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body.error).toBe(new MissingParamError('password').message)
   });
@@ -59,7 +59,7 @@ describe('Create User Controller', () => {
 
   test('Should return 500 if no httpRequest is provided', async () => {
     const httpRequest = {};
-    const httpResponse = await createUserController.handle(httpRequest);
+    const httpResponse = await createUserComposer.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(500);
     expect(httpResponse.body.error).toBe(new InternalServerError().message)
   });
