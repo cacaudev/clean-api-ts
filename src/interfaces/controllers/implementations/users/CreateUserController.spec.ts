@@ -1,7 +1,7 @@
 import { createUserController } from '@interfaces/composers/users/CreateUserComposer';
 import { MissingParamError, InternalServerError } from '@interfaces/helpers/errors';
 
-describe('Main Controller', () => {
+describe('Create User Controller', () => {
 
   test('Should return 400 if no name is provided', async () => {
     const httpRequest = {
