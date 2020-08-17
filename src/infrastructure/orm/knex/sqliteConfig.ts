@@ -7,5 +7,6 @@ export default {
   },
   migrations: {
     directory: path.resolve(__dirname, 'migrations')
-  }
+  },
+  useNullAsDefault: true,
 };

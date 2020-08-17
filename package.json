@@ -11,7 +11,8 @@
     "test": "jest --colors --noStackTrace --runInBand --detectOpenHandles --forceExit",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "format": "prettier --write ./src/**/*.ts",
-    "knex:migrate": "npx knex migrate:latest --knexfile ./src/infrastructure/orm/knex/sqliteConfig.ts"
+    "knex:migrate": "npx knex migrate:latest --knexfile ./src/infrastructure/orm/knex/sqliteConfig.ts",
+    "knex:seed": "npx knex seed:run --knexfile ./src/infrastructure/orm/knex/sqliteConfig.ts"
   },
   "repository": {
     "type": "git",
