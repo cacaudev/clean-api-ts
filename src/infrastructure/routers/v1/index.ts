@@ -11,5 +11,6 @@ export default (router: Router): void => {
   usersRouter(v1Router);
 
   router.use(v1Router.routes());
+  router.use(v1Router.allowedMethods());
 };
 

@@ -1,6 +1,6 @@
 import Router from 'koa-router';
 
-import { createUserComposer } from "@interfaces/composers/users/CreateUserComposer";
+import { createUserComposer } from "@infrastructure/composers/users/CreateUserComposer";
 import { KoaControllerAdapter } from '@infrastructure/adapters/KoaControllerAdapter';
 
 export default (router: Router): void => {
@@ -13,5 +13,6 @@ export default (router: Router): void => {
   );
 
   router.use(usersRouter.routes());
+  router.use(usersRouter.allowedMethods());
 };
 

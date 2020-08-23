@@ -1,4 +1,4 @@
-import { IUsersRepository } from "@repositories/definitions/IUsersRepository";
+import { IUsersRepository } from "@repositories/IUsersRepository";
 import { CreateUserRequestDTO } from './CreateUserDTO';
 import { User } from '@entities/User';
 import { IUseCase } from "@useCases/IUseCase";

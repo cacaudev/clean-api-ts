@@ -1,4 +1,4 @@
-import { loginComposer } from '../../../composers/auth/LoginComposer';
+import { loginComposer } from '@infrastructure/composers/auth/LoginComposer';
 import {
   MissingParamError,
   InternalServerError,

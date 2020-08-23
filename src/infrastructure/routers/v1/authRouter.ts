@@ -1,6 +1,6 @@
 import Router from 'koa-router';
 
-import { loginComposer } from "@interfaces/composers/auth/LoginComposer";
+import { loginComposer } from "@infrastructure/composers/auth/LoginComposer";
 import { KoaControllerAdapter } from '@infrastructure/adapters/KoaControllerAdapter';
 
 export default (router: Router): void => {
@@ -13,4 +13,5 @@ export default (router: Router): void => {
   );
 
   router.use(authRouter.routes());
+  router.use(authRouter.allowedMethods());
 };

@@ -1,6 +1,6 @@
 import knex from 'knex';
 import sqliteConfig from './sqliteConfig';
 
-const knexConnection = knex(sqliteConfig);
+const knexDatabase = knex(sqliteConfig);
 
-export default knexConnection;
+export default knexDatabase;

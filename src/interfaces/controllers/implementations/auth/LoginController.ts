@@ -11,12 +11,7 @@ export class LoginController implements IHttpClientController {
   ) {}
 
   handle = async (httpRequest: HttpRequestType) => {
-
-    // TODO: Remove this later, only for testing purposes
-    const correctCredentials = {
-      email: 'correctEmail@email.com',
-      password: 'correctEmail'
-    };
+    console.log('Entrou no login controller');
 
     try {
       const { email, password } = httpRequest.body;
@@ -28,16 +23,15 @@ export class LoginController implements IHttpClientController {
         return HttpClientResponse.badRequest(new MissingParamError('password'));
       }
 
-      // Todo: Remove this, substitute for token generator
-      const accessToken = { accessToken: 'sfdsgd4f53d4s5f6ds74f564'};
+      const accessToken = await this.loginUseCase.execute({ email, password });
+      //const accessToken = { accessToken: 'sfdsgd4f53d4s5f6ds74f564'};
 
-      await this.loginUseCase.execute({ email, password });
-
-      if (email == correctCredentials.email && password == correctCredentials.password) {
+      if (accessToken) {
         return HttpClientResponse.ok(accessToken);
       } else {
         return HttpClientResponse.unauthorizedError();
       }
+
     } catch (error) {
       return HttpClientResponse.serverError();
     }
