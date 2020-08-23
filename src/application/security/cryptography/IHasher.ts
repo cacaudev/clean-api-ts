@@ -1,3 +1,3 @@
-export interface IHarsher {
-  hash: (plainText: string) => Promise<string>;
+export interface IHasher {
+  hash: (payloadToHash: any) => Promise<string>;
 };
