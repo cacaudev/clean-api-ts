@@ -2,7 +2,7 @@ import { IHttpClientController } from '../../definitions';
 import { HttpRequestType } from '@interfaces/helpers/types';
 import { HttpClientResponse } from '@interfaces/helpers/HttpClientResponse';
 import { MissingParamError } from '@interfaces/helpers/errors';
-import { LoginUseCase } from '@useCases/auth/LoginUseCase';
+import { LoginUseCase } from '@useCases/auth/login/LoginUseCase';
 
 export class LoginController implements IHttpClientController {
 

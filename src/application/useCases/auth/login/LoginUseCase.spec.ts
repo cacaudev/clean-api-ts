@@ -1,5 +1,5 @@
 import { LoginUseCase } from './LoginUseCase';
-import { UsersRepository } from '../../../domain/repositories/implementations/UsersRepository';
+import { UsersRepository } from '../../../../domain/repositories/implementations/UsersRepository';
 
 const usersRepository = new UsersRepository();
 const loginUseCase = new LoginUseCase(usersRepository);
