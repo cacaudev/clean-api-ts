@@ -8,6 +8,6 @@ const loadRoutesMiddleware = (app: Koa) => {
   mainRoutes(router);
   app.use(router.routes());
   app.use(router.allowedMethods());
-}
+};
 
 export { loadRoutesMiddleware };
