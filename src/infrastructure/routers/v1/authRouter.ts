@@ -3,9 +3,14 @@ import Router from 'koa-router';
 import { loginComposer } from "@interfaces/composers/auth/LoginComposer";
 import { KoaControllerAdapter } from '@infrastructure/adapters/KoaControllerAdapter';
 
-const authRouter = new Router({ prefix: '/auth' });
+export default (router: Router): void => {
+  const authRouter = new Router();
+  authRouter.prefix('/auth');
 
-authRouter
-  .post('/login', KoaControllerAdapter.adapt(loginComposer));
+  authRouter.post(
+    '/login',
+    KoaControllerAdapter.adapt(loginComposer)
+  );
 
-export { authRouter };
+  router.use(authRouter.routes());
+};

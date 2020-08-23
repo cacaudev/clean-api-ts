@@ -2,12 +2,13 @@ import Router from 'koa-router';
 
 import { mainController } from '@interfaces/composers/MainComposer';
 import { KoaControllerAdapter } from '../adapters/KoaControllerAdapter';
-import { v1Router } from './v1';
+import v1Router from './v1';
 
-const mainRouter = new Router();
+export default (router: Router): void => {
+  router.get(
+    '/',
+    KoaControllerAdapter.adapt(mainController)
+  );
 
-mainRouter
-  .get('/', KoaControllerAdapter.adapt(mainController))
-  .use(v1Router.routes());
-
-export { mainRouter };
+  v1Router(router);
+}

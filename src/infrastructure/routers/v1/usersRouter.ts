@@ -3,10 +3,15 @@ import Router from 'koa-router';
 import { createUserComposer } from "@interfaces/composers/users/CreateUserComposer";
 import { KoaControllerAdapter } from '@infrastructure/adapters/KoaControllerAdapter';
 
-const usersRouter = new Router({ prefix: '/user' });
+export default (router: Router): void => {
+  const usersRouter = new Router();
+  usersRouter.prefix('/user');
 
-usersRouter
-  .post('/', KoaControllerAdapter.adapt(createUserComposer));
+  usersRouter.post(
+    '/',
+    KoaControllerAdapter.adapt(createUserComposer)
+  );
 
-export { usersRouter };
+  router.use(usersRouter.routes());
+};
 

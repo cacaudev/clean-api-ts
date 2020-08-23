@@ -1,13 +1,15 @@
 import Router from 'koa-router';
 
-import { usersRouter } from './usersRouter';
-import { authRouter } from './authRouter';
+import usersRouter from './usersRouter';
+import authRouter from './authRouter';
 
-const v1Router = new Router({ prefix: '/v1'});
+export default (router: Router): void => {
+  const v1Router = new Router();
+  v1Router.prefix('/v1');
 
-v1Router
-  .use(authRouter.routes())
-  .use(usersRouter.routes());
+  authRouter(v1Router);
+  usersRouter(v1Router);
 
-export { v1Router };
+  router.use(v1Router.routes());
+};
 

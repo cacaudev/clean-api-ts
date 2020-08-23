@@ -3,10 +3,11 @@ import cors from '@koa/cors';
 import helmet from 'koa-helmet';
 import morgan from 'koa-morgan';
 import compress from 'koa-compress';
-import { bodyParserMiddleware } from '@infrastructure/middlewares/requestParser';
+import {
+  bodyParserMiddleware,
+  loadRoutesMiddleware
+} from '@infrastructure/middlewares';
 import { Logger } from '@infrastructure/providers/common/logger';
-import { mainRouter } from '@infrastructure/routers/mainRouter';
-
 
 class App extends Koa {
   constructor() {
@@ -41,11 +42,7 @@ class App extends Koa {
   }
 
   private applyRouters() {
-    /**
-     * Load API routes
-     */
-    this.use(mainRouter.routes());
-    this.use(mainRouter.allowedMethods());
+    loadRoutesMiddleware(this);
   }
 }
 
