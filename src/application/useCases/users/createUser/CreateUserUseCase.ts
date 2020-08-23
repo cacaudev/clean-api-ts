@@ -1,5 +1,5 @@
 import { IUsersRepository } from "@repositories/definitions/IUsersRepository";
-import { ICreateUserRequest } from './ICreateUser';
+import { CreateUserRequestDTO } from './CreateUserDTO';
 import { User } from '@entities/User';
 import { IUseCase } from "@useCases/IUseCase";
 
@@ -8,7 +8,7 @@ class CreateUserUseCase implements IUseCase {
     private usersRepository: IUsersRepository
   ) {};
 
-  async execute(data: ICreateUserRequest) {
+  async execute(data: CreateUserRequestDTO) {
     console.log('Executing create user use case');
 
     const userAlreadyExists = await this.usersRepository.findByEmail(data.email);

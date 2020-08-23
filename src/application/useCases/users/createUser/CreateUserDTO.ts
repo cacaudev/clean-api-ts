@@ -1,4 +1,4 @@
-export interface ICreateUserRequest {
+export interface CreateUserRequestDTO {
   name: string;
   surname: string;
   email: string;
