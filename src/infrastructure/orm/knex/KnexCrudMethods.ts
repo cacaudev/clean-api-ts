@@ -1,4 +1,4 @@
-import knexDatabase from '../connection';
+import knexDatabase from './connection';
 
 class KnexCrudMethod {
   constructor() {}
@@ -16,16 +16,20 @@ class KnexCrudMethod {
     console.log('fields',fields);
     console.log('filters',filters);
 
-    return await knexDatabase(tableName)
+    return await knexDatabase<User>(tableName)
       .select(fields)
       .where(builder => {
         filters.forEach(condition => {
           builder.where(...condition)
         })
+        console.log('builder',builder);
       })
-      .then(rows => rows)
-      .catch(error => console.log('Error on knex select query: ', error))
-      .finally(() => knexDatabase.destroy());
+      .then(rows => {
+        console.log('rows',rows);
+        return rows;
+      })
+      .catch(error => console.log('Error on knex select query: ', error));
+      //.finally(() => knexDatabase.destroy());
   };
 
   async updateData(tableName:string, options = { fields: [], filters: [] }) {

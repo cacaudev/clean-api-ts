@@ -9,19 +9,16 @@ class CreateUserUseCase implements IUseCase {
   ) {};
 
   async execute(data: CreateUserRequestDTO) {
-    console.log('Executing create user use case');
-
     const userAlreadyExists = await this.usersRepository.findByEmail(data.email);
-
-    if (userAlreadyExists) {
-      throw new Error('User already exists');
+     if (userAlreadyExists) {
+      return null;
     }
 
     const user = new User(data);
-    return user;
 
-    //const newUser = await this.usersRepository.add(user);
-    //return newUser;
+    const newUser = await this.usersRepository.add(user);
+    console.log('newUser',newUser);
+    return newUser;
   };
 };
 

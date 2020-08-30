@@ -1,7 +1,7 @@
 import { IUsersRepository } from '@repositories/IUsersRepository';
 import { User } from '@entities/User';
-import { KnexCrudMethod } from './KnexCrudMethods';
-
+import { KnexCrudMethod } from '../KnexCrudMethods';
+import knexDatabase from '../connection';
 // Users Mocked
 const usersMocked = [
   {
@@ -24,22 +24,27 @@ class UserKnexRepository implements IUsersRepository {
 
   constructor() {}
 
-  async findByEmail(email: string): Promise<User> {
-    console.log('Finding user by email');
+  async findByEmail(email: string): Promise<User | void> {
+    const fields = ['id','email','password'];
+    const filters =  [
+      ['email', '=', email],
+    ];
 
-    const knexMethod = new KnexCrudMethod();
-    await knexMethod.selectData('users',
-      {
-        fields: [],
-        filters: [
-          ['email', '=', email],
-        ]
-      }).then(users => {
-        console.log('result ', users);
+    const userFound = await knexDatabase<User>('users')
+      .select(fields)
+      .where(builder => {
+        filters.forEach(condition => {
+          builder.where(...condition)
+        })
+      })
+      .then(rows => rows[0])
+      .catch(error => {
+        console.log('Error on knex select query: ', error)
+        return null;
       });
 
-    return usersMocked[0];
-  }
+    return userFound;
+  };
 
   async findById(id: string): Promise<User> {
     console.log('Finding user by id');
@@ -72,14 +77,16 @@ class UserKnexRepository implements IUsersRepository {
 
   async add(user: User): Promise<User> {
     console.log('Adding new user');
-
-    const knexMethod = new KnexCrudMethod();
-    await knexMethod.insertData('users', [user])
-      .then(userId => {
-        console.log('result ', userId);
+    const newUser = await knexDatabase<User>('users')
+      .returning('*')
+      .insert(user)
+      .then(response => response)
+      .catch(error => {
+        console.log('Error on knex select query: ', error)
+        return null;
       });
 
-    return user;
+    return newUser;
   };
 
   async update(payload: User, userId: string): Promise<void> {
@@ -109,24 +116,6 @@ class UserKnexRepository implements IUsersRepository {
       }).then(userId => {
           console.log('result ', userId);
       });
-  };
-
-  async loadAccountByEmail(email: string): Promise<User> {
-    console.log('Getting user password with email', email);
-
-    const knexMethod = new KnexCrudMethod();
-    await knexMethod.selectData('users',
-      {
-        fields: ['id','email','password'],
-        filters: [
-          ['email', '=', email],
-        ]
-      }).then(users => {
-        console.log('result ', users);
-        return users;
-      });
-
-    //return usersMocked[1];
   };
 }
 

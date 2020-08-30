@@ -13,20 +13,14 @@ class LoginUseCase implements IUseCase {
   async execute (data: LoginRequestDTO) {
     console.log('Executing Login Use Case:');
 
-    console.log('Search user with email...');
-    const userAccountFound = await this.usersRepository.loadAccountByEmail(data.email);
+    const userAccountFound = await this.usersRepository.findByEmail(data.email);
     console.log('userAccountFound',userAccountFound);
 
     if (userAccountFound) {
-      console.log('Checking if password matches from account found...');
       const isPasswordValid = await this.passwordComparer.compare(data.password, userAccountFound.password);
 
       if (isPasswordValid) {
-        console.log('Generating access token...');
-
         const accessToken = await this.tokenGenerator.hash(userAccountFound.id);
-
-        console.log('Returning new access token');
         return accessToken;
       }
     }

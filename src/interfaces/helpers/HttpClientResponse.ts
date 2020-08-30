@@ -1,6 +1,6 @@
 import StatusCodes from './types/statusCodes';
 import { HttpResponseType } from './types/HttpResponse';
-import { UnauthorizedError, InternalServerError } from './errors';
+import { UnauthorizedError, InternalServerError, InvalidFieldError } from './errors';
 
 class HttpClientResponse {
   static ok (body?: any): HttpResponseType {
@@ -24,6 +24,14 @@ class HttpClientResponse {
       statusCode: StatusCodes.BAD_REQUEST,
       type: 'application/json',
       body: { error: error.message }
+    }
+  }
+
+  static conflictError (error: any): HttpResponseType {
+    return {
+      statusCode: StatusCodes.CONFLICT,
+      type: 'application/json',
+      body: { error: new InvalidFieldError(error).message }
     }
   }
 

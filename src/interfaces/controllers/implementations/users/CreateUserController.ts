@@ -2,7 +2,7 @@ import { CreateUserUseCase } from '@useCases/users/createUser/CreateUserUseCase'
 import { IHttpClientController } from '../../definitions/IHttpClientController';
 import { HttpRequestType } from '../../../helpers/types';
 import { HttpClientResponse } from '../../../helpers/HttpClientResponse';
-import { MissingParamError } from '@interfaces/helpers/errors';
+import { MissingParamError, InvalidFieldError } from '@interfaces/helpers/errors';
 
 export class CreateUserController implements IHttpClientController {
   constructor(
@@ -32,6 +32,9 @@ export class CreateUserController implements IHttpClientController {
         email,
         password
       });
+      if (!newUser) {
+        return HttpClientResponse.conflictError('Email already in use.');
+      }
 
       return HttpClientResponse.created(newUser);
 
