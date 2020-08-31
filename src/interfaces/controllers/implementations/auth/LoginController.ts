@@ -11,8 +11,6 @@ export class LoginController implements IHttpClientController {
   ) {}
 
   handle = async (httpRequest: HttpRequestType) => {
-    console.log('Entrou no login controller');
-
     try {
       const { email, password } = httpRequest.body;
 
@@ -24,10 +22,9 @@ export class LoginController implements IHttpClientController {
       }
 
       const accessToken = await this.loginUseCase.execute({ email, password });
-      //const accessToken = { accessToken: 'sfdsgd4f53d4s5f6ds74f564'};
 
       if (accessToken) {
-        return HttpClientResponse.ok(accessToken);
+        return HttpClientResponse.ok({ accessToken });
       } else {
         return HttpClientResponse.unauthorizedError();
       }

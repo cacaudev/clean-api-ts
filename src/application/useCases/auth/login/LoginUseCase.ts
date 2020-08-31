@@ -11,10 +11,7 @@ class LoginUseCase implements IUseCase {
   ) {};
 
   async execute (data: LoginRequestDTO) {
-    console.log('Executing Login Use Case:');
-
     const userAccountFound = await this.usersRepository.findByEmail(data.email);
-    console.log('userAccountFound',userAccountFound);
 
     if (userAccountFound) {
       const isPasswordValid = await this.passwordComparer.compare(data.password, userAccountFound.password);
