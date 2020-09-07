@@ -1,6 +1,6 @@
-type HttpResponseType = {
+type HttpResponse = {
   statusCode: number;
   type?: string;
   body?: any;
 };
-export { HttpResponseType };
+export { HttpResponse };

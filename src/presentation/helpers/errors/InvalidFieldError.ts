@@ -1,6 +1,6 @@
 class InvalidFieldError extends Error {
-  constructor (parameterName) {
-    super(`Invalid Field: ${parameterName}`)
+  constructor(parameterName) {
+    super(`Invalid Field: ${parameterName}`);
     this.name = 'InvalidFieldError';
   }
 }

@@ -1,7 +1,7 @@
-import { HttpRequestType, HttpResponseType } from '@presentation/helpers/types';
+import { HttpRequest, HttpResponse } from '@presentation/helpers/types';
 
 interface IHttpClientController {
-  handle(httpRequest: HttpRequestType): Promise<HttpResponseType>;
+  handle(httpRequest: HttpRequest): Promise<HttpResponse>;
 }
 
 export { IHttpClientController };

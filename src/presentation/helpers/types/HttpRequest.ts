@@ -1,9 +1,10 @@
-type HttpRequestType = {
+type HttpRequest = {
   headers?: any;
   body?: any;
   query?: any;
   params?: any;
   userId?: string;
+  contentType?: string;
 };
 
-export { HttpRequestType };
+export { HttpRequest };

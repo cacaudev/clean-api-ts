@@ -1,58 +1,72 @@
-import StatusCodes from './types/statusCodes';
-import { HttpResponseType } from './types/HttpResponse';
-import { UnauthorizedError, InternalServerError, InvalidFieldError } from './errors';
+import statusCodes from './types/statusCodes';
+import { HttpResponse } from './types/HttpResponse';
+import {
+  UnauthorizedError,
+  InternalServerError,
+  InvalidFieldError,
+} from './errors';
 
 class HttpClientResponse {
-  static ok (body?: any): HttpResponseType {
+  static ok(body?: any): HttpResponse {
     return {
-      statusCode: StatusCodes.OK,
+      statusCode: statusCodes.OK,
       type: 'application/json',
-      body
+      body,
     };
   }
 
-  static created (body: any): HttpResponseType {
+  static created(body: any): HttpResponse {
     return {
-      statusCode: StatusCodes.CREATED,
+      statusCode: statusCodes.CREATED,
       type: 'application/json',
-      body
+      body,
     };
   }
 
-  static badRequest (error: any): HttpResponseType {
+  static badRequest(error: any): HttpResponse {
     return {
-      statusCode: StatusCodes.BAD_REQUEST,
+      statusCode: statusCodes.BAD_REQUEST,
       type: 'application/json',
-      body: { error: error.message }
-    }
+      body: { error: error.message },
+    };
   }
 
-  static conflictError (error: any): HttpResponseType {
+  static conflictError(error: any): HttpResponse {
     return {
-      statusCode: StatusCodes.CONFLICT,
+      statusCode: statusCodes.CONFLICT,
       type: 'application/json',
-      body: { error: new InvalidFieldError(error).message }
-    }
+      body: { error: new InvalidFieldError(error).message },
+    };
   }
 
-  static unauthorizedError (): HttpResponseType {
+  static unauthorizedError(): HttpResponse {
     return {
-      statusCode: StatusCodes.UNAUTHORIZED,
+      statusCode: statusCodes.UNAUTHORIZED,
       type: 'application/json',
       body: {
-         error: new UnauthorizedError().message
-      }
-    }
+        error: new UnauthorizedError().message,
+      },
+    };
   }
 
-  static serverError (): HttpResponseType {
+  static invalidMediaType(mediaType: string): HttpResponse {
     return {
-      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+      statusCode: statusCodes.UNSUPPORTED_MEDIA_TYPE,
       type: 'application/json',
       body: {
-        error: new InternalServerError().message
-      }
-    }
+        error: `Content-type sent is not supported. Supported media type: ${mediaType}`,
+      },
+    };
+  }
+
+  static serverError(): HttpResponse {
+    return {
+      statusCode: statusCodes.INTERNAL_SERVER_ERROR,
+      type: 'application/json',
+      body: {
+        error: new InternalServerError().message,
+      },
+    };
   }
 }
 

@@ -1,13 +1,13 @@
 import { IHttpClientController } from '@presentation/interfaces/IHttpClientController';
-import { HttpRequestType } from '@presentation/helpers/types';
+import { HttpRequest } from '@presentation/helpers/types';
 import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
 import { MissingParamError } from '@presentation/helpers/errors';
 import { LoginUseCase } from '@useCases/auth/login/LoginUseCase';
 
-export class LoginController implements IHttpClientController {
+class LoginController implements IHttpClientController {
   constructor(private loginUseCase: LoginUseCase) {}
 
-  handle = async (httpRequest: HttpRequestType) => {
+  handle = async (httpRequest: HttpRequest) => {
     try {
       const { email, password } = httpRequest.body;
 
@@ -30,3 +30,5 @@ export class LoginController implements IHttpClientController {
     }
   };
 }
+
+export { LoginController };
