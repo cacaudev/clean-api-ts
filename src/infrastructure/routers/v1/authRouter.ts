@@ -2,8 +2,8 @@ import Router from 'koa-router';
 
 import { loginComposer } from '@infrastructure/composers/auth/LoginComposer';
 import {
-  KoaControllerAdapter,
-  KoaMiddlewareAdapter,
+  RouterControllerAdapter,
+  RouterMiddlewareAdapter,
 } from '@infrastructure/adapters';
 import { ContentTypeMiddleware } from '@presentation/middlewares/ContentTypeMiddleware';
 
@@ -15,8 +15,8 @@ export default (router: Router): void => {
 
   authRouter.post(
     '/login',
-    KoaMiddlewareAdapter.adapt(contentTypeCheck),
-    KoaControllerAdapter.adapt(loginComposer)
+    RouterMiddlewareAdapter.adapt(contentTypeCheck),
+    RouterControllerAdapter.adapt(loginComposer)
   );
 
   router.use(authRouter.routes());

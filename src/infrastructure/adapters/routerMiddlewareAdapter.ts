@@ -2,7 +2,7 @@ import { Context, Next } from 'koa';
 import { HttpRequest } from '@presentation/helpers/types';
 import { IMiddleware } from '@presentation/interfaces/IMiddleware';
 
-class KoaMiddlewareAdapter {
+class RouterMiddlewareAdapter {
   static adapt(middleware: IMiddleware) {
     return async (ctx: Context, next: Next) => {
       const httpRequest: HttpRequest = {
@@ -25,4 +25,4 @@ class KoaMiddlewareAdapter {
   }
 }
 
-export { KoaMiddlewareAdapter };
+export { RouterMiddlewareAdapter };

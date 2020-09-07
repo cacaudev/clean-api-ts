@@ -1,2 +1,2 @@
-export * from './koaControllerAdapter';
-export * from './koaMiddlewareAdapter';
+export * from './routerControllerAdapter';
+export * from './routerMiddlewareAdapter';
