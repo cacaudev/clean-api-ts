@@ -8,9 +8,8 @@
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "node dist/index.js",
     "prod": "npm run build && node dist/index.js",
+    "test:watch": "jest --watch --silent --verbose --colors",
     "test": "jest --colors --noStackTrace --runInBand --detectOpenHandles --forceExit",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "format": "prettier --write ./src/**/*.ts",
     "knex:migrate": "npx knex migrate:latest --knexfile ./src/infrastructure/orm/knex/sqliteConfig.ts",
     "knex:seed": "npx knex seed:run --knexfile ./src/infrastructure/orm/knex/sqliteConfig.ts"
   },

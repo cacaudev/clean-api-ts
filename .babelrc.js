@@ -16,14 +16,16 @@ module.exports = {
       {
         alias: {
           '@config': './src/config',
-          '@entities': './src/domain/entities',
-          '@interfaces': './src/interfaces',
+          '@entities': './src/core/entities',
+          '@repositories': './src/core/repositories',
+          '@presentation': './src/presentation',
+          '@controllers': './src/presentation/controllers',
           '@infrastructure': './src/infrastructure',
-          '@repositories': './src/domain/repositories',
           '@useCases': './src/application/useCases',
+          '@security': './src/application/security',
         },
       },
     ],
   ],
-  ignore: ['**/*.spec.ts'],
+  //ignore: ['**/*.spec.ts'],
 };
