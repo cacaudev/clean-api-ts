@@ -1,8 +1,9 @@
-
 type HttpRequestType = {
-  body?: any,
-  query?: any,
-  params?: any
+  headers?: any;
+  body?: any;
+  query?: any;
+  params?: any;
+  userId?: string;
 };
 
 export { HttpRequestType };

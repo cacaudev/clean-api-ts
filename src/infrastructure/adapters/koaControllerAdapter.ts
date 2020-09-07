@@ -1,5 +1,5 @@
 import { Context, Next } from 'koa';
-import { IHttpClientController } from '@controllers/IHttpClientController';
+import { IHttpClientController } from '@presentation/interfaces/IHttpClientController';
 import { HttpRequestType } from '@presentation/helpers/types';
 
 class KoaControllerAdapter {

@@ -1,8 +1,5 @@
 import Koa from 'koa';
-import {
-  loadersMiddleware,
-  loadRoutesMiddleware
-} from '@infrastructure/middlewares';
+import { loadMiddlewares, loadRoutes } from '@infrastructure/middlewares';
 
 class App extends Koa {
   constructor() {
@@ -14,11 +11,11 @@ class App extends Koa {
   }
 
   private applyMiddlewares() {
-    loadersMiddleware(this);
+    loadMiddlewares(this);
   }
 
   private applyRouters() {
-    loadRoutesMiddleware(this);
+    loadRoutes(this);
   }
 }
 

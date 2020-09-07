@@ -1,3 +1,3 @@
 export * from './requestParser';
-export * from './setupRoutes';
-export * from './setupMiddlewares';
+export * from './loadRoutes';
+export * from './loadMiddlewares';

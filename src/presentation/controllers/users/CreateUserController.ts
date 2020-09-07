@@ -1,5 +1,5 @@
 import { CreateUserUseCase } from '@useCases/users/createUser/CreateUserUseCase';
-import { IHttpClientController } from '@controllers/IHttpClientController';
+import { IHttpClientController } from '@presentation/interfaces/IHttpClientController';
 import { HttpRequestType } from '@presentation/helpers/types';
 import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
 import {
