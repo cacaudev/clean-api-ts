@@ -1,9 +1,8 @@
-import { IHashComparer } from "src/application/security/cryptography";
-import { InternalServerError } from "@interfaces/helpers/errors";
+import { IHashComparer } from '@security/cryptography';
+import { InternalServerError } from '@presentation/helpers/errors';
 import bcrypt from 'bcryptjs';
 
 class PasswordComparer implements IHashComparer {
-
   async compare(plainPassword: string, encryptedPassword: string) {
     try {
       return bcrypt.compareSync(plainPassword, encryptedPassword);
@@ -11,6 +10,6 @@ class PasswordComparer implements IHashComparer {
       throw new InternalServerError('Error ocurred on token decrypter.');
     }
   }
-};
+}
 
 export { PasswordComparer };

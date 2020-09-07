@@ -1,13 +1,14 @@
 import { CreateUserUseCase } from '@useCases/users/createUser/CreateUserUseCase';
-import { IHttpClientController } from '../../definitions/IHttpClientController';
-import { HttpRequestType } from '../../../helpers/types';
-import { HttpClientResponse } from '../../../helpers/HttpClientResponse';
-import { MissingParamError, InvalidFieldError } from '@interfaces/helpers/errors';
+import { IHttpClientController } from '@controllers/IHttpClientController';
+import { HttpRequestType } from '@presentation/helpers/types';
+import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
+import {
+  MissingParamError,
+  InvalidFieldError,
+} from '@presentation/helpers/errors';
 
 export class CreateUserController implements IHttpClientController {
-  constructor(
-    private createUserUseCase: CreateUserUseCase,
-  ) {}
+  constructor(private createUserUseCase: CreateUserUseCase) {}
 
   handle = async (httpRequest: HttpRequestType) => {
     try {
@@ -30,17 +31,15 @@ export class CreateUserController implements IHttpClientController {
         name,
         surname,
         email,
-        password
+        password,
       });
       if (!newUser) {
         return HttpClientResponse.conflictError('Email already in use.');
       }
 
       return HttpClientResponse.created(newUser);
-
     } catch (error) {
       return HttpClientResponse.serverError();
     }
-  }
-};
-
+  };
+}

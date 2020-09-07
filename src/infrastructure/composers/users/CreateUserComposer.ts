@@ -1,6 +1,6 @@
 import { UserKnexRepository } from '../../orm/knex/repositories/UserKnexRepository';
 import { CreateUserUseCase } from '@useCases/users/createUser/CreateUserUseCase';
-import { CreateUserController } from '../../../interfaces/controllers/implementations/users/CreateUserController';
+import { CreateUserController } from '@controllers/users/CreateUserController';
 import { PasswordEncrypter } from '@infrastructure/cryptography/bcrypt/passwordEncrypter';
 
 const usersRepository = new UserKnexRepository();
@@ -11,9 +11,6 @@ const createUserUseCase = new CreateUserUseCase(
   bcryptPasswordEncrypter
 );
 
-const createUserComposer = new CreateUserController(
-  createUserUseCase
-);
+const createUserComposer = new CreateUserController(createUserUseCase);
 
 export { createUserComposer };
-

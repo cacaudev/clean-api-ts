@@ -1,4 +1,4 @@
-import { MainController } from '@interfaces/controllers/implementations/main/MainController';
+import { MainController } from '@controllers/main/MainController';
 
 const mainController = new MainController();
 

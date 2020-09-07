@@ -1,14 +1,11 @@
-import { IHttpClientController } from '../../definitions';
-import { HttpRequestType } from '@interfaces/helpers/types';
-import { HttpClientResponse } from '@interfaces/helpers/HttpClientResponse';
-import { MissingParamError } from '@interfaces/helpers/errors';
+import { IHttpClientController } from '@controllers/IHttpClientController';
+import { HttpRequestType } from '@presentation/helpers/types';
+import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
+import { MissingParamError } from '@presentation/helpers/errors';
 import { LoginUseCase } from '@useCases/auth/login/LoginUseCase';
 
 export class LoginController implements IHttpClientController {
-
-  constructor(
-    private loginUseCase: LoginUseCase
-  ) {}
+  constructor(private loginUseCase: LoginUseCase) {}
 
   handle = async (httpRequest: HttpRequestType) => {
     try {
@@ -28,9 +25,8 @@ export class LoginController implements IHttpClientController {
       } else {
         return HttpClientResponse.unauthorizedError();
       }
-
     } catch (error) {
       return HttpClientResponse.serverError();
     }
-  }
-};
+  };
+}
