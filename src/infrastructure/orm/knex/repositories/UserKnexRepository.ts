@@ -1,8 +1,8 @@
-import { IUsersRepository } from '@repositories/IUsersRepository';
 import { User } from '@entities/User';
+import { IUsersRepository } from '@repositories/IUsersRepository';
 import { KnexCrudMethod } from '../KnexCrudMethods';
-import knexDatabase from '../connection';
-// Users Mocked
+import { KnexOrmDriver } from '../knexDriver';
+
 const usersMocked = [
   {
     name: 'Cacau',
@@ -27,6 +27,8 @@ class UserKnexRepository implements IUsersRepository {
     const fields = ['id', 'email', 'password'];
     const filters = [['email', '=', email]];
 
+    const knexDatabase = KnexOrmDriver.getInstance();
+
     const userFound = await knexDatabase<User>('users')
       .select(fields)
       .where((builder) => {
@@ -39,6 +41,8 @@ class UserKnexRepository implements IUsersRepository {
         console.log('Error on knex select query: ', error);
         return null;
       });
+
+    console.log('userFound', userFound);
 
     return userFound;
   }
@@ -72,6 +76,8 @@ class UserKnexRepository implements IUsersRepository {
 
   async add(user: User): Promise<User> {
     console.log('Adding new user');
+
+    const knexDatabase = KnexOrmDriver.getInstance();
     const newUser = await knexDatabase<User>('users')
       .returning('*')
       .insert(user)

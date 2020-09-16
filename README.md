@@ -1,9 +1,8 @@
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/cacaudev/koa-api-template-ts)
 
-# Koa API BoilerPlate
+# Clean API BoilerPlate
 
-Typescript version of repo koa-api-template (REST API template
-to be used on personal projects and for learning purposes)
+Typescript version of repo koa-api-template (REST API template to be used on personal projects and for learning purposes)
 
 🚀 UNDER CONSTRUCTION 🚀
 
@@ -39,4 +38,4 @@ $ npm install
 - [x] Use Case Layer
 - [x] Entities Layer
 - [x] Repositories Layer
-- [x] Providers Layer
+- [ ] Providers Layer

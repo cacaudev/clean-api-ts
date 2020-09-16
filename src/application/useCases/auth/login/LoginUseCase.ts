@@ -1,13 +1,12 @@
-import { ILoginUseCase } from './ILoginUseCase';
-import { IUseCase } from '@useCases/IUseCase';
 import { IUsersRepository } from '@repositories/IUsersRepository';
 import { IHashComparer, IHasher } from '@security/cryptography';
+import { ILoginUseCase } from './ILoginUseCase';
 
 class LoginUseCase implements ILoginUseCase {
   constructor(
     private usersRepository: IUsersRepository,
     private passwordComparer: IHashComparer,
-    private tokenGenerator: IHasher
+    private tokenGenerator: IHasher,
   ) {}
 
   async execute(data: { email: string; password: string }) {
@@ -16,7 +15,7 @@ class LoginUseCase implements ILoginUseCase {
     if (userAccountFound) {
       const isPasswordValid = await this.passwordComparer.compare(
         data.password,
-        userAccountFound.password
+        userAccountFound.password,
       );
 
       if (isPasswordValid) {

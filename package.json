@@ -1,5 +1,5 @@
 {
-  "name": "koa-api-template-ts",
+  "name": "clean-api-template-ts",
   "version": "1.0.0",
   "description": "Typescript version of repo koa-api-template (js).",
   "main": "index.js",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cacaudev/koa-api-template-ts.git"
+    "url": "git+https://github.com/cacaudev/clean-api-template-ts.git"
   },
   "author": "cacaudev",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cacaudev/koa-api-template-ts/issues"
+    "url": "https://github.com/cacaudev/clean-api-template-ts/issues"
   },
-  "homepage": "https://github.com/cacaudev/koa-api-template-ts#readme",
+  "homepage": "https://github.com/cacaudev/clean-api-template-ts#readme",
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "bcryptjs": "^2.4.3",

@@ -1,64 +1,65 @@
-import knexDatabase from './connection';
-
+import { User } from '@entities/User';
+import { KnexOrmDriver } from './knexDriver';
 class KnexCrudMethod {
   constructor() {}
 
-  async insertData(tableName:string , data: any) {
+  async insertData(tableName: string, data: any) {
+    const knexDatabase = KnexOrmDriver.getInstance();
+
     return await knexDatabase(tableName)
       .insert(data)
-      .then(response => response)
-      .finally(() => knexDatabase.destroy());
-  };
+      .then((response) => response)
+      .catch((error) => console.log('Error on knex select query: ', error));
+  }
 
-  async selectData(tableName:string, options = { fields: [], filters: [] }) {
+  async selectData(tableName: string, options = { fields: [], filters: [] }) {
     const { fields, filters } = options;
-
-    console.log('fields',fields);
-    console.log('filters',filters);
+    const knexDatabase = KnexOrmDriver.getInstance();
 
     return await knexDatabase<User>(tableName)
       .select(fields)
-      .where(builder => {
-        filters.forEach(condition => {
-          builder.where(...condition)
-        })
-        console.log('builder',builder);
+      .where((builder) => {
+        filters.forEach((condition) => {
+          builder.where(...condition);
+        });
+        console.log('builder', builder);
       })
-      .then(rows => {
-        console.log('rows',rows);
+      .then((rows) => {
+        console.log('rows', rows);
         return rows;
       })
-      .catch(error => console.log('Error on knex select query: ', error));
-      //.finally(() => knexDatabase.destroy());
-  };
+      .catch((error) => console.log('Error on knex select query: ', error));
+  }
 
-  async updateData(tableName:string, options = { fields: [], filters: [] }) {
+  async updateData(tableName: string, options = { fields: [], filters: [] }) {
     const { fields, filters } = options;
+    const knexDatabase = KnexOrmDriver.getInstance();
 
     return await knexDatabase(tableName)
-      .where(builder => {
-        filters.forEach(condition => {
-          builder.where(...condition)
-        })
+      .where((builder) => {
+        filters.forEach((condition) => {
+          builder.where(...condition);
+        });
       })
       .update(fields)
-      .then(data => data)
-      .finally(() => knexDatabase.destroy());
-  };
+      .then((data) => data)
+      .catch((error) => console.log('Error on knex update query: ', error));
+  }
 
-  async deleteData(tableName:string, options = { fields: [], filters: [] }) {
+  async deleteData(tableName: string, options = { fields: [], filters: [] }) {
     const { fields, filters } = options;
+    const knexDatabase = KnexOrmDriver.getInstance();
 
     return await knexDatabase(tableName)
-    .where(builder => {
-      filters.forEach(condition => {
-        builder.where(...condition)
+      .where((builder) => {
+        filters.forEach((condition) => {
+          builder.where(...condition);
+        });
       })
-    })
-    .del()
-    .then(data => data)
-    .finally(() => knexDatabase.destroy());
-  };
-};
+      .del()
+      .then((data) => data)
+      .catch((error) => console.log('Error on knex delete query: ', error));
+  }
+}
 
 export { KnexCrudMethod };
