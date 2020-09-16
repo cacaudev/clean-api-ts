@@ -1,5 +1,6 @@
 import { User } from '@entities/User';
 import { IUsersRepository } from '@repositories/IUsersRepository';
+import Knex from 'knex';
 import { KnexCrudMethod } from '../KnexCrudMethods';
 import { KnexOrmDriver } from '../knexDriver';
 
@@ -21,15 +22,17 @@ const usersMocked = [
 ];
 
 class UserKnexRepository implements IUsersRepository {
-  constructor() {}
+  private dbInstance: Knex;
+
+  constructor() {
+    this.dbInstance = KnexOrmDriver.getInstance();
+  }
 
   async findByEmail(email: string): Promise<User | void> {
     const fields = ['id', 'email', 'password'];
     const filters = [['email', '=', email]];
 
-    const knexDatabase = KnexOrmDriver.getInstance();
-
-    const userFound = await knexDatabase<User>('users')
+    const userFound = await this.dbInstance<User>('users')
       .select(fields)
       .where((builder) => {
         filters.forEach((condition) => {
@@ -42,14 +45,10 @@ class UserKnexRepository implements IUsersRepository {
         return null;
       });
 
-    console.log('userFound', userFound);
-
     return userFound;
   }
 
   async findById(id: string): Promise<User> {
-    console.log('Finding user by id');
-
     const knexMethod = new KnexCrudMethod();
     await knexMethod
       .selectData('users', {
@@ -63,9 +62,7 @@ class UserKnexRepository implements IUsersRepository {
     return usersMocked[0];
   }
 
-  async getAll(): Promise<User[]> {
-    console.log('Getting all users');
-
+  async getAll() {
     const knexMethod = new KnexCrudMethod();
     await knexMethod.selectData('users').then((users) => {
       console.log('result ', users);
@@ -74,11 +71,8 @@ class UserKnexRepository implements IUsersRepository {
     return usersMocked;
   }
 
-  async add(user: User): Promise<User> {
-    console.log('Adding new user');
-
-    const knexDatabase = KnexOrmDriver.getInstance();
-    const newUser = await knexDatabase<User>('users')
+  async add(user: User) {
+    const newUser = await this.dbInstance<User>('users')
       .returning('*')
       .insert(user)
       .then((response) => response)
@@ -90,7 +84,7 @@ class UserKnexRepository implements IUsersRepository {
     return newUser;
   }
 
-  async update(payload: User, userId: string): Promise<void> {
+  async update(payload: User, userId: string) {
     console.log('Updating existing user');
 
     const knexMethod = new KnexCrudMethod();
@@ -104,7 +98,7 @@ class UserKnexRepository implements IUsersRepository {
       });
   }
 
-  async delete(userId: string): Promise<void> {
+  async delete(userId: string) {
     console.log('Deleting existing user');
 
     const knexMethod = new KnexCrudMethod();

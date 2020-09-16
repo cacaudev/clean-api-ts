@@ -1,12 +1,15 @@
 import { User } from '@entities/User';
+import Knex from 'knex';
 import { KnexOrmDriver } from './knexDriver';
 class KnexCrudMethod {
-  constructor() {}
+  private dbInstance: Knex;
+
+  constructor() {
+    this.dbInstance = KnexOrmDriver.getInstance();
+  }
 
   async insertData(tableName: string, data: any) {
-    const knexDatabase = KnexOrmDriver.getInstance();
-
-    return await knexDatabase(tableName)
+    return await this.dbInstance(tableName)
       .insert(data)
       .then((response) => response)
       .catch((error) => console.log('Error on knex select query: ', error));
@@ -14,9 +17,8 @@ class KnexCrudMethod {
 
   async selectData(tableName: string, options = { fields: [], filters: [] }) {
     const { fields, filters } = options;
-    const knexDatabase = KnexOrmDriver.getInstance();
 
-    return await knexDatabase<User>(tableName)
+    return await this.dbInstance<User>(tableName)
       .select(fields)
       .where((builder) => {
         filters.forEach((condition) => {
@@ -33,9 +35,8 @@ class KnexCrudMethod {
 
   async updateData(tableName: string, options = { fields: [], filters: [] }) {
     const { fields, filters } = options;
-    const knexDatabase = KnexOrmDriver.getInstance();
 
-    return await knexDatabase(tableName)
+    return await this.dbInstance(tableName)
       .where((builder) => {
         filters.forEach((condition) => {
           builder.where(...condition);
@@ -48,9 +49,8 @@ class KnexCrudMethod {
 
   async deleteData(tableName: string, options = { fields: [], filters: [] }) {
     const { fields, filters } = options;
-    const knexDatabase = KnexOrmDriver.getInstance();
 
-    return await knexDatabase(tableName)
+    return await this.dbInstance(tableName)
       .where((builder) => {
         filters.forEach((condition) => {
           builder.where(...condition);
