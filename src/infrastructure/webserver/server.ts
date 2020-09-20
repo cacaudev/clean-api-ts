@@ -1,13 +1,12 @@
-import { App } from './app';
 import { Logger } from '../providers/common/logger';
+import { App } from './app';
 
 const PORT = process.env.port || 3000;
 const app = new App();
 const log = Logger.getInstance().subject;
 
 class WebServer {
-  static startApp () {
-
+  static startApp() {
     const onAppError = (error: NodeJS.ErrnoException): void => {
       if (error.syscall !== 'listen') throw error;
       switch (error.code) {
@@ -26,8 +25,7 @@ class WebServer {
     };
 
     const onAppListening = (): void => {
-      const serverAddress = server.address();
-      log.info(`[SERVER] Running at http://localhost:${serverAddress.port}`);
+      log.info(`[SERVER] Running at http://localhost:${PORT}`);
     };
 
     const server = app.listen(PORT, onAppListening);

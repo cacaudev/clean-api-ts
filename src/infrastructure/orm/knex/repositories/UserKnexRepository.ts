@@ -50,7 +50,6 @@ class UserKnexRepository implements IUsersRepository {
 
   async add(user: User) {
     const newUser = await this.dbInstance<User>('users')
-      .returning('*')
       .insert(user)
       .then((response) => response)
       .catch((error) => {
