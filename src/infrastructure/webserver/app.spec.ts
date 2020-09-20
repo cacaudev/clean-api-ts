@@ -1,5 +1,5 @@
-import supertest from 'supertest';
 import http from 'http';
+import supertest from 'supertest';
 import { App } from './app';
 
 describe('Integration App Test', () => {

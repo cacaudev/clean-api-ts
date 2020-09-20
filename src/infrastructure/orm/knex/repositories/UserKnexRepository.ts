@@ -1,7 +1,6 @@
 import { User } from '@entities/User';
 import { IUsersRepository } from '@repositories/IUsersRepository';
 import Knex from 'knex';
-import { KnexCrudMethod } from '../KnexCrudMethods';
 import { KnexOrmDriver } from '../knexDriver';
 
 const usersMocked = [
@@ -30,45 +29,23 @@ class UserKnexRepository implements IUsersRepository {
 
   async findByEmail(email: string): Promise<User | void> {
     const fields = ['id', 'email', 'password'];
-    const filters = [['email', '=', email]];
-
     const userFound = await this.dbInstance<User>('users')
       .select(fields)
-      .where((builder) => {
-        filters.forEach((condition) => {
-          builder.where(...condition);
-        });
-      })
+      .where({ email })
       .then((rows) => rows[0])
       .catch((error) => {
         console.log('Error on knex select query: ', error);
         return null;
       });
-
     return userFound;
   }
 
-  async findById(id: string): Promise<User> {
-    const knexMethod = new KnexCrudMethod();
-    await knexMethod
-      .selectData('users', {
-        fields: [],
-        filters: [['id', '=', id]],
-      })
-      .then((users) => {
-        console.log('result ', users);
-      });
-
-    return usersMocked[0];
+  async findById(id: string): Promise<void | User> {
+    throw new Error('Method not implemented.');
   }
 
-  async getAll() {
-    const knexMethod = new KnexCrudMethod();
-    await knexMethod.selectData('users').then((users) => {
-      console.log('result ', users);
-    });
-
-    return usersMocked;
+  async getAll(): Promise<void> {
+    throw new Error('Method not implemented.');
   }
 
   async add(user: User) {
@@ -85,31 +62,11 @@ class UserKnexRepository implements IUsersRepository {
   }
 
   async update(payload: User, userId: string) {
-    console.log('Updating existing user');
-
-    const knexMethod = new KnexCrudMethod();
-    await knexMethod
-      .insertData('users', {
-        fields: payload,
-        filters: [['id', '=', userId]],
-      })
-      .then((userId) => {
-        console.log('result ', userId);
-      });
+    throw new Error('Method not implemented.');
   }
 
   async delete(userId: string) {
-    console.log('Deleting existing user');
-
-    const knexMethod = new KnexCrudMethod();
-    await knexMethod
-      .deleteData('users', {
-        fields: [],
-        filters: [['id', '=', userId]],
-      })
-      .then((userId) => {
-        console.log('result ', userId);
-      });
+    throw new Error('Method not implemented.');
   }
 }
 

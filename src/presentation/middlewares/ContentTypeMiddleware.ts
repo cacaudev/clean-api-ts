@@ -1,6 +1,6 @@
-import { IMiddleware } from '@presentation/interfaces/IMiddleware';
-import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
+import { HttpClientResponse } from '@presentation/helpers/httpClientResponse';
 import { HttpRequest } from '@presentation/helpers/types';
+import { IMiddleware } from '@presentation/interfaces/IMiddleware';
 
 class ContentTypeMiddleware implements IMiddleware {
   handle = async (httpRequest: HttpRequest) => {
