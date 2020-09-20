@@ -17,8 +17,8 @@
       "@config/*": ["src/infrastructure/config/*"],
       "@entities/*": ["src/core/entities/*"],
       "@presentation/*": ["src/presentation/*"],
-      "@controllers/*": ["./src/presentation/controllers/*"],
-      "@security/*": ["./src/application/security/*"],
+      "@controllers/*": ["src/presentation/controllers/*"],
+      "@security/*": ["src/application/security/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
       "@repositories/*": ["src/core/repositories/*"],
       "@useCases/*": ["src/application/useCases/*"]

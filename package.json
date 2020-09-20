@@ -7,7 +7,7 @@
     "dev": "cross-env NODE_ENV=development nodemon --ignore node_modules --watch src --exec babel-node --extensions \".ts,.js\" src/index.ts",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "node dist/index.js",
-    "prod": "npm run build && node dist/index.js",
+    "prod": "cross-env NODE_ENV=production npm run build && node dist/index.js",
     "test:watch": "jest --watch --silent --verbose --colors",
     "test": "jest --colors --noStackTrace --runInBand --detectOpenHandles --forceExit",
     "knex:migrate": "npx knex migrate:latest --knexfile ./src/infrastructure/orm/knex/sqliteConfig.ts",
@@ -77,6 +77,9 @@
     "babel-polyfill": "^6.26.0",
     "babel-watch": "^7.0.0",
     "cross-env": "^7.0.2",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.4.0",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
@@ -84,9 +87,6 @@
     "supertest": "^4.0.2",
     "ts-jest": "^26.1.1",
     "ts-node": "^9.0.0",
-    "tsconfig-paths": "^3.9.0",
-    "tslint": "^6.1.2",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.9.6"
   }
 }
