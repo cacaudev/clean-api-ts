@@ -11,4 +11,9 @@ module.exports = {
   verbose: true,
   coverageDirectory: 'coverage',
   collectCoverageFrom: ['./src/**/*.ts'],
+  modulePathIgnorePatterns: [
+    '<rootDir>/dist/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/src/infrastructure/orm/',
+  ],
 };
