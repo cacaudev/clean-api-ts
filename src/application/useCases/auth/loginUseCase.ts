@@ -16,19 +16,16 @@ class LoginUseCase implements IUseCase {
 
   async execute(data: LoginRequestDTO) {
     const userAccountFound = await this.usersRepository.findByEmail(data.email);
-
     if (userAccountFound) {
       const isPasswordValid = await this.passwordComparer.compare(
         data.password,
         userAccountFound.password,
       );
-
       if (isPasswordValid) {
         const accessToken = await this.tokenGenerator.hash(userAccountFound.id);
         return accessToken;
       }
     }
-
     return;
   }
 }

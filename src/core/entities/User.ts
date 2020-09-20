@@ -7,9 +7,9 @@ export class User {
   public surname: string;
   public password: string;
 
-  constructor(attributes: Omit<User, 'id'>, id?: string) {
+  constructor(public attributes: Partial<User> = {}) {
     Object.assign(this, attributes);
-    if (!id) {
+    if (!this.id) {
       this.id = uuidv4();
     }
   }
