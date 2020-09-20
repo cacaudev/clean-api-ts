@@ -1,13 +1,19 @@
-import { IUsersRepository } from '@repositories/IUsersRepository';
-import { CreateUserRequestDTO } from './CreateUserDTO';
 import { User } from '@entities/User';
-import { IUseCase } from '@useCases/IUseCase';
+import { IUsersRepository } from '@repositories/IUsersRepository';
 import { IEncrypter } from '@security/cryptography';
+import { IUseCase } from '@useCases/IUseCase';
+
+interface CreateUserRequestDTO {
+  name: string;
+  surname: string;
+  email: string;
+  password: string;
+}
 
 class CreateUserUseCase implements IUseCase {
   constructor(
     private usersRepository: IUsersRepository,
-    private passwordEncrypter: IEncrypter
+    private passwordEncrypter: IEncrypter,
   ) {}
 
   async execute(data: CreateUserRequestDTO) {

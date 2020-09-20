@@ -1,7 +1,6 @@
-import Router from 'koa-router';
-
-import { mainController } from '@infrastructure/composers/MainComposer';
 import { RouterControllerAdapter } from '@infrastructure/adapters/routerControllerAdapter';
+import { mainController } from '@infrastructure/composers/mainComposer';
+import Router from 'koa-router';
 import v1Router from './v1';
 
 export default (router: Router): void => {

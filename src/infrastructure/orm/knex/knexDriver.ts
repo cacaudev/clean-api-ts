@@ -1,5 +1,5 @@
-import { IORMDriver } from '@presentation/interfaces/IOrmDriver';
 import { default as knex, default as Knex } from 'knex';
+import { IORMDriver } from '../IOrmDriver';
 import sqliteConfig from './sqliteConfig';
 
 class KnexOrmDriver implements IORMDriver {
@@ -22,7 +22,7 @@ class KnexOrmDriver implements IORMDriver {
   async initDB(databaseConfiguration: any) {
     this.database = knex(databaseConfiguration);
   }
-  public async closeConnection(): Promise<void> {
+  public async closeDB(): Promise<void> {
     this.database.destroy();
     this.database = null;
   }

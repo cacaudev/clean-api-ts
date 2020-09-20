@@ -1,10 +1,6 @@
+import { InternalServerError, InvalidFieldError, UnauthorizedError } from './errors';
+import { HttpResponse } from './types/httpResponse';
 import statusCodes from './types/statusCodes';
-import { HttpResponse } from './types/HttpResponse';
-import {
-  UnauthorizedError,
-  InternalServerError,
-  InvalidFieldError,
-} from './errors';
 
 class HttpClientResponse {
   static ok(body?: any): HttpResponse {

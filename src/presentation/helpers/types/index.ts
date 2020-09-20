@@ -1,2 +1,2 @@
-export * from './HttpRequest';
-export * from './HttpResponse';
+export * from './httpRequest';
+export * from './httpResponse';

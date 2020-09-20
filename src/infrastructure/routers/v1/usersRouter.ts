@@ -1,7 +1,6 @@
-import Router from 'koa-router';
-
-import { createUserComposer } from '@infrastructure/composers/users/CreateUserComposer';
 import { RouterControllerAdapter } from '@infrastructure/adapters/routerControllerAdapter';
+import { createUserComposer } from '@infrastructure/composers/users/createUserComposer';
+import Router from 'koa-router';
 
 export default (router: Router): void => {
   const usersRouter = new Router();

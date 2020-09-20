@@ -1,11 +1,10 @@
-import Router from 'koa-router';
-
-import { loginComposer } from '@infrastructure/composers/auth/LoginComposer';
 import {
   RouterControllerAdapter,
   RouterMiddlewareAdapter,
 } from '@infrastructure/adapters';
+import { loginComposer } from '@infrastructure/composers/auth/loginComposer';
 import { ContentTypeMiddleware } from '@presentation/middlewares/ContentTypeMiddleware';
+import Router from 'koa-router';
 
 export default (router: Router): void => {
   const authRouter = new Router();
@@ -16,7 +15,7 @@ export default (router: Router): void => {
   authRouter.post(
     '/login',
     RouterMiddlewareAdapter.adapt(contentTypeCheck),
-    RouterControllerAdapter.adapt(loginComposer)
+    RouterControllerAdapter.adapt(loginComposer),
   );
 
   router.use(authRouter.routes());

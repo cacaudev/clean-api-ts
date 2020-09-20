@@ -1,8 +1,8 @@
-import { IHttpClientController } from '@presentation/interfaces/IHttpClientController';
-import { HttpRequest } from '@presentation/helpers/types';
-import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
 import { MissingParamError } from '@presentation/helpers/errors';
-import { LoginUseCase } from '@useCases/auth/login/LoginUseCase';
+import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
+import { HttpRequest } from '@presentation/helpers/types';
+import { IHttpClientController } from '@presentation/interfaces/IHttpClientController';
+import { LoginUseCase } from '@useCases/auth/loginUseCase';
 
 class LoginController implements IHttpClientController {
   constructor(private loginUseCase: LoginUseCase) {}
