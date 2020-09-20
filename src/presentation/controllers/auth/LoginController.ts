@@ -1,5 +1,5 @@
 import { MissingParamError } from '@presentation/helpers/errors';
-import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
+import { HttpClientResponse } from '@presentation/helpers/httpClientResponse';
 import { HttpRequest } from '@presentation/helpers/types';
 import { IHttpClientController } from '@presentation/interfaces/IHttpClientController';
 import { LoginUseCase } from '@useCases/auth/loginUseCase';

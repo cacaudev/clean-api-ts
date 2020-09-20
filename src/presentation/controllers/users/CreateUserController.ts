@@ -1,11 +1,8 @@
-import { CreateUserUseCase } from '@useCases/users/createUser/CreateUserUseCase';
-import { IHttpClientController } from '@presentation/interfaces/IHttpClientController';
+import { MissingParamError } from '@presentation/helpers/errors';
+import { HttpClientResponse } from '@presentation/helpers/httpClientResponse';
 import { HttpRequestType } from '@presentation/helpers/types';
-import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
-import {
-  MissingParamError,
-  InvalidFieldError,
-} from '@presentation/helpers/errors';
+import { IHttpClientController } from '@presentation/interfaces/IHttpClientController';
+import { CreateUserUseCase } from '@useCases/users/createUser/createUserUseCase';
 
 export class CreateUserController implements IHttpClientController {
   constructor(private createUserUseCase: CreateUserUseCase) {}

@@ -1,4 +1,4 @@
-import { MainController } from './MainController';
+import { MainController } from './mainController';
 
 const makeSut = () => {
   const sut = new MainController();

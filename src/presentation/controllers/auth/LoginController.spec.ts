@@ -1,11 +1,11 @@
 import {
-  MissingParamError,
   InternalServerError,
+  MissingParamError,
   UnauthorizedError,
 } from '@presentation/helpers/errors';
-import { LoginController } from './LoginController';
 import { IUsersRepository } from '@repositories/IUsersRepository';
 import { IHashComparer } from '@security/cryptography';
+import { LoginController } from './loginController';
 
 const makeSut = () => {
   class UserRepositorySpy {
@@ -29,7 +29,7 @@ const makeSut = () => {
     constructor(
       usersRepository: IUsersRepository,
       passwordComparer: IHashComparer,
-      tokenGenerator: IHasher
+      tokenGenerator: IHasher,
     ) {}
 
     execute(email: string, password: string) {
@@ -44,7 +44,7 @@ const makeSut = () => {
   const loginUseCaseSpy = new LoginUseCaseSpy(
     userRepositorySpy,
     passwordComparerSpy,
-    tokenGeneratorSpy
+    tokenGeneratorSpy,
   );
   const sut = new LoginController(loginUseCaseSpy);
   return {
@@ -61,9 +61,7 @@ describe('Login Controller', () => {
     };
     const httpResponse = await sut.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
-    expect(httpResponse.body.error).toBe(
-      new MissingParamError('email').message
-    );
+    expect(httpResponse.body.error).toBe(new MissingParamError('email').message);
   });
 
   test('Should return 400 if no password is provided', async () => {
@@ -73,9 +71,7 @@ describe('Login Controller', () => {
     };
     const httpResponse = await sut.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
-    expect(httpResponse.body.error).toBe(
-      new MissingParamError('password').message
-    );
+    expect(httpResponse.body.error).toBe(new MissingParamError('password').message);
   });
 
   test('Should return 500 if no httpRequest is provided', async () => {

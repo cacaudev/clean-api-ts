@@ -1,7 +1,7 @@
+import { LoginController } from '@controllers/auth/loginController';
 import { PasswordComparer } from '@infrastructure/cryptography/bcrypt/passwordComparer';
 import { AuthTokenGenerator } from '@infrastructure/cryptography/jwt/tokenGenerator';
 import { LoginUseCase } from '@useCases/auth/loginUseCase';
-import { LoginController } from 'src/presentation/controllers/auth/loginController';
 import { UserKnexRepository } from '../../orm/knex/repositories/UserKnexRepository';
 
 const usersRepository = new UserKnexRepository();
