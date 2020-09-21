@@ -6,6 +6,8 @@ export class User {
   public name: string;
   public surname: string;
   public password: string;
+  public readonly createdAt: Date;
+  public readonly updatedAt: Date;
 
   constructor(attributes: Partial<User>, id?: string) {
     Object.assign(this, attributes);

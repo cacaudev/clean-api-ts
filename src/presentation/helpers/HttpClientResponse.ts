@@ -1,5 +1,5 @@
 import { InternalServerError, InvalidFieldError, UnauthorizedError } from './errors';
-import { HttpResponse } from './types/httpResponse';
+import { HttpResponse } from './types/HttpResponse';
 import statusCodes from './types/statusCodes';
 
 class HttpClientResponse {

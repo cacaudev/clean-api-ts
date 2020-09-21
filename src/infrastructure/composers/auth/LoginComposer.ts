@@ -1,4 +1,4 @@
-import { LoginController } from '@controllers/auth/loginController';
+import { LoginController } from '@controllers/auth/LoginController';
 import { PasswordComparer } from '@infrastructure/cryptography/bcrypt/passwordComparer';
 import { AuthTokenGenerator } from '@infrastructure/cryptography/jwt/tokenGenerator';
 import { LoginUseCase } from '@useCases/auth/loginUseCase';

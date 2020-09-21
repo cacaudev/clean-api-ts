@@ -1,9 +1,9 @@
-import { HttpClientResponse } from '@presentation/helpers/httpClientResponse';
+import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
 import { HttpRequest } from '@presentation/helpers/types';
 import { IMiddleware } from '@presentation/interfaces/IMiddleware';
 
 class ContentTypeMiddleware implements IMiddleware {
-  handle = async (httpRequest: HttpRequest) => {
+  async handle(httpRequest: HttpRequest) {
     try {
       const { contentType } = httpRequest;
       const validMediaType = 'application/json';
@@ -16,7 +16,7 @@ class ContentTypeMiddleware implements IMiddleware {
     } catch (error) {
       return HttpClientResponse.serverError();
     }
-  };
+  }
 }
 
 export { ContentTypeMiddleware };

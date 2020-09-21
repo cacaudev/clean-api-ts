@@ -1,4 +1,4 @@
-import { CreateUserController } from '@controllers/users/createUserController';
+import { CreateUserController } from '@controllers/users/CreateUserController';
 import { PasswordEncrypter } from '@infrastructure/cryptography/bcrypt/passwordEncrypter';
 import { CreateUserUseCase } from '@useCases/users/createUserUseCase';
 import { UserKnexRepository } from '../../orm/knex/repositories/UserKnexRepository';

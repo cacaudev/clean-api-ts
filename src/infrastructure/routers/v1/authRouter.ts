@@ -2,8 +2,8 @@ import {
   RouterControllerAdapter,
   RouterMiddlewareAdapter,
 } from '@infrastructure/adapters';
-import { loginComposer } from '@infrastructure/composers/auth/loginComposer';
-import { ContentTypeMiddleware } from '@presentation/middlewares/contentTypeMiddleware';
+import { loginComposer } from '@infrastructure/composers/auth/LoginComposer';
+import { ContentTypeMiddleware } from '@presentation/middlewares/ContentTypeMiddleware';
 import Router from 'koa-router';
 
 export default (router: Router): void => {

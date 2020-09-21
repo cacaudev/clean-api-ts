@@ -5,7 +5,7 @@ import {
   MissingParamError,
 } from '@presentation/helpers/errors';
 import { CreateUserUseCase } from '@useCases/users/createUserUseCase';
-import { CreateUserController } from './createUserController';
+import { CreateUserController } from './CreateUserController';
 
 const userExample = {
   name: 'Cacau',

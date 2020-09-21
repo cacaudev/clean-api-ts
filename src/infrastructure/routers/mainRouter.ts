@@ -1,5 +1,5 @@
 import { RouterControllerAdapter } from '@infrastructure/adapters/routerControllerAdapter';
-import { mainController } from '@infrastructure/composers/mainComposer';
+import { mainController } from '@infrastructure/composers/MainComposer';
 import Router from 'koa-router';
 import v1Router from './v1';
 

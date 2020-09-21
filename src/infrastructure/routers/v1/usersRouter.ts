@@ -1,5 +1,5 @@
 import { RouterControllerAdapter } from '@infrastructure/adapters/routerControllerAdapter';
-import { createUserComposer } from '@infrastructure/composers/users/createUserComposer';
+import { createUserComposer } from '@infrastructure/composers/users/CreateUserComposer';
 import Router from 'koa-router';
 
 export default (router: Router): void => {

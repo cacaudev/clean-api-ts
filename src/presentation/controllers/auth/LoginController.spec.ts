@@ -5,7 +5,7 @@ import {
   UnauthorizedError,
 } from '@presentation/helpers/errors';
 import { LoginUseCase } from '@useCases/auth/loginUseCase';
-import { LoginController } from './loginController';
+import { LoginController } from './LoginController';
 
 const userExample = {
   name: 'Cacau',

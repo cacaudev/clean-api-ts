@@ -1,5 +1,5 @@
 import { MissingParamError } from '@presentation/helpers/errors';
-import { HttpClientResponse } from '@presentation/helpers/httpClientResponse';
+import { HttpClientResponse } from '@presentation/helpers/HttpClientResponse';
 import { HttpRequest } from '@presentation/helpers/types';
 import { IHttpClientController } from '@presentation/interfaces/IHttpClientController';
 import { LoginUseCase } from '@useCases/auth/loginUseCase';
@@ -7,7 +7,7 @@ import { LoginUseCase } from '@useCases/auth/loginUseCase';
 class LoginController implements IHttpClientController {
   constructor(private loginUseCase: LoginUseCase) {}
 
-  handle = async (httpRequest: HttpRequest) => {
+  async handle(httpRequest: HttpRequest) {
     try {
       const { email, password } = httpRequest.body;
 
@@ -28,7 +28,7 @@ class LoginController implements IHttpClientController {
     } catch (error) {
       return HttpClientResponse.serverError();
     }
-  };
+  }
 }
 
 export { LoginController };
