@@ -8,12 +8,12 @@ class SequelizeDriver implements IORMDriver {
 
   private constructor() {}
 
-  public static async getInstance() {
+  public static getInstance() {
     if (!SequelizeDriver.instance) {
       const newSequelizeDriver = new SequelizeDriver();
       const sequelizeConfig = sqliteConfig['development'];
-      await newSequelizeDriver.initDB(sequelizeConfig);
-      await newSequelizeDriver.connectDB();
+      newSequelizeDriver.initDB(sequelizeConfig);
+      newSequelizeDriver.connectDB();
       SequelizeDriver.instance = newSequelizeDriver;
     }
 
