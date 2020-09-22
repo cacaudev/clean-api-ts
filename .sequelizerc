@@ -1,0 +1,10 @@
+const path = require('path');
+
+/*
+ * This config is only used by sequelize cli,
+ * not to load models or connect to databases
+ */
+module.exports = {
+  'config': path.resolve('src', 'infrastructure', 'orm', 'sequelize', 'config.js'),
+  'migrations-path': path.resolve('src', 'infrastructure', 'orm', 'sequelize', 'migrations'),
+}
