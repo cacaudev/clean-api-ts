@@ -1,30 +1,19 @@
 import { Sequelize } from 'sequelize';
-import { IORMDriver } from '../IOrmDriver';
-import sqliteConfig from './sqliteConfig';
+const sqliteConfig = require('./sqliteConfig');
+
+/*
 
 class SequelizeDriver implements IORMDriver {
-  public static instance: SequelizeDriver;
   public database: Sequelize;
 
-  private constructor() {}
-
-  public static getInstance() {
-    if (!SequelizeDriver.instance) {
-      const newSequelizeDriver = new SequelizeDriver();
-      const sequelizeConfig = sqliteConfig['development'];
-      newSequelizeDriver.initDB(sequelizeConfig);
-      newSequelizeDriver.connectDB();
-      SequelizeDriver.instance = newSequelizeDriver;
-    }
-
-    return SequelizeDriver.instance.database;
+  constructor() {
+    const sequelizeConfig = sqliteConfig['development'];
+    this.initDB(sequelizeConfig);
+    this.syncModels();
   }
 
-  public async syncModels() {}
-
   async initDB(databaseConfig: any) {
-    console.log('databaseConfig', databaseConfig);
-
+    console.log('initiating db');
     try {
       this.database = new Sequelize({
         database: databaseConfig.databaseName,
@@ -35,7 +24,13 @@ class SequelizeDriver implements IORMDriver {
       throw error;
     }
   }
+
+  async syncModels() {
+    await this.database.sync({ force: true });
+  }
+
   async connectDB() {
+    console.log('connecting db');
     this.database
       .authenticate()
       .then(() => console.log('Connected to Sequelize DB successfully'))
@@ -44,10 +39,32 @@ class SequelizeDriver implements IORMDriver {
       });
   }
   async closeDB() {
-    SequelizeDriver.instance = null;
     this.database.close();
     this.database = null;
   }
 }
 
-export { SequelizeDriver };
+const sequelize = new SequelizeDriver();
+const sequelizeDB = sequelize.database;
+
+*/
+
+const config = sqliteConfig['development'];
+
+const sequelize = new Sequelize({
+  dialect: config.dialect,
+  storage: config.storage,
+  logging: config.logging,
+});
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection established successfully.');
+  })
+  .catch((err) => {
+    throw err;
+  });
+
+let dbConnection = sequelize;
+export default dbConnection;

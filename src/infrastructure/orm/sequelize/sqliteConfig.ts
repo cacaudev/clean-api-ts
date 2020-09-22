@@ -1,8 +1,11 @@
-export default {
+const path = require('path');
+
+module.exports = {
   development: {
     databaseName: 'clean_api_db',
     dialect: 'sqlite',
     operatorsAliases: false,
-    storage: './database.sqlite3',
+    storage: path.resolve(__dirname, './database.sqlite3'),
+    logging: false,
   },
 };
