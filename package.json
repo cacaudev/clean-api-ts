@@ -9,7 +9,10 @@
     "start": "node dist/index.js",
     "prod": "cross-env NODE_ENV=production npm run build && node dist/index.js",
     "test:watch": "jest --watch --silent --verbose --colors",
-    "test": "cross-env NODE_ENV=test jest --colors --noStackTrace --runInBand --detectOpenHandles --coverage --forceExit",
+    "test": "cross-env NODE_ENV=test jest --colors --noStackTrace --runInBand --detectOpenHandles --forceExit",
+    "test:unit": "npm test -- -c jest-unit-config.js",
+    "test:integration": "npm test -- -c jest-integration-config.js",
+    "test:staged": "npm test -- --findRelatedTests ./src/*",
     "knex:migrate": "npx knex migrate:latest --knexfile ./src/infrastructure/orm/knex/sqliteConfig.ts",
     "knex:seed": "npx knex seed:run --knexfile ./src/infrastructure/orm/knex/sqliteConfig.ts"
   },

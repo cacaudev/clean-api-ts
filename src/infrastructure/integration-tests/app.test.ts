@@ -1,6 +1,6 @@
 import http from 'http';
 import supertest from 'supertest';
-import { App } from './app';
+import { App } from '../webserver/app';
 
 describe('Integration App Test', () => {
   test('[GET] /', (done) => {
