@@ -1,3 +1,3 @@
 export interface IEncrypter {
-  encrypt: (textToEncrypt: string) => Promise<string>;
-};
+  encrypt: (textToEncrypt: any) => Promise<string>;
+}

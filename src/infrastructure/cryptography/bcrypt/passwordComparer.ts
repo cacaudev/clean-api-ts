@@ -3,7 +3,7 @@ import { InternalServerError } from '@presentation/helpers/errors';
 import bcrypt from 'bcryptjs';
 
 class PasswordComparer implements IHashComparer {
-  async compare(plainPassword: string, encryptedPassword: string) {
+  async compare(plainPassword: string, encryptedPassword: string): Promise<boolean> {
     try {
       return bcrypt.compareSync(plainPassword, encryptedPassword);
     } catch (error) {

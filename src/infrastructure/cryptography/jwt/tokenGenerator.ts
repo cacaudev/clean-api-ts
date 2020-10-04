@@ -1,18 +1,24 @@
 import { IHasher } from '@security/cryptography';
 import { InternalServerError } from '@presentation/helpers/errors';
-import jwt from 'jsonwebtoken';
+import { JwtAdapter } from '../../adapters/jwtAdapter';
 
 const JWTSECRET = 'somesecret';
 
 class AuthTokenGenerator implements IHasher {
-  async hash(payloadToHash: any) {
+  async hash(objectToEncypt: any) {
     try {
-      const token = jwt.sign({ id: payloadToHash.id }, JWTSECRET, {
-        algorithm: 'HS256',
-        expiresIn: '7d',
-      });
+      const jwtAdapter = new JwtAdapter(JWTSECRET);
+      jwtAdapter.setAlgorithm('HS256');
+      jwtAdapter.setExpirationPeriod('7d');
+
+      const payload = {
+        id: objectToEncypt.id,
+      };
+
+      const token = await jwtAdapter.encrypt(payload);
       return token;
     } catch (error) {
+      console.log('error', error);
       throw new InternalServerError('Failed to generate user auth token');
     }
   }
